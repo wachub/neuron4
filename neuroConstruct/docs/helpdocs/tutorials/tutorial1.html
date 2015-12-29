@@ -1,0 +1,91 @@
+<!--
+        This HTML file was automatically generated from the documentation files in /docs/XML/xmlForHtml/docs
+    --><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Very quick tutorial</title>
+<style type="text/css">
+                     h1 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     h3 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     p {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     li {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ol {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ul {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                 </style>
+</head>
+<body>
+  
+    
+<h3 style="font-size: 16;color: black">Very quick tutorial</h3>
+  
+  
+
+
+
+
+
+
+<p style="">The quickest way to create a simulation in in neuroConstruct is as follows:</p>
+
+<ol>
+
+
+<li>
+<a href="../install.html#Building+and+running">Run</a> neuroConstruct. Click on <b>File -&gt; New Project</b>
+</li>
+
+
+<li>Enter the project name and the directory in which to place the main project folder. Click <b>OK</b>
+</li>
+
+
+<li>Accept the offer to create a few sample objects in the new project.</li>
+
+
+
+<li>Select the tab <b>Generate</b>. Press the <b>Generate Cell Positions and Connections</b> button.</li>
+
+
+
+<li>Go to <b>Visualisation</b>. In the drop down box, select Latest Generated Positions.
+Press <b>View</b>. You should see an abstract neuron placed in a 3D box. There will also be a pipette like structure
+signifying an electrical input.</li>
+
+
+
+<li>If <a href="../Glossary_gen.html#NEURON">NEURON</a> or <a href="../Glossary_gen.html#GENESIS">GENESIS</a> are installed (assuming NEURON) go to tab
+<b>Export</b> and select the <b>NEURON</b> tab.
+Select the <b>Show 3D potential plot</b> checkbox, and click <b>Create hoc simulation</b>. This will create the hoc code
+for the main file, and a template for the cell, as well as <a href="../Glossary_gen.html#NMODL">NMODL</a> code for the channels. The NMODL files
+will be compiled and a confirmation shown. If there is a problem, go to <b>Settings -&gt; General Properties</b> and check location there for the NEURON home directory.
+The contents of the *.mod and *.hoc files can be viewed by selecting the filename and pressing <b>View</b>.
+</li>
+
+
+<li>Click on <b>Run Simulation</b>. This should start NEURON and run the simulation you have just created.
+</li>
+
+
+<li>Back in neuroConstruct, once the simulation has finished, go to tab <b>Visualisation</b>, and click on <b>Previous Simulations</b>
+You will see a list of all recorded simulations. Click on the simulation just completed and click <b>Load Simulation</b>.
+The generated cell appears again. Press <b>Replay</b> to view the recorded simulation.
+</li>
+
+
+
+</ol>
+
+
+
+<p style="">Have a look <a href="../Glossary_gen.html#3D View of Cells">here</a> to see the various options which can be set when viewing cells in 3D.</p>
+
+
+
+
+<p style="">&nbsp;</p>
+
+<p style="">&nbsp;</p>
+  
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<Lems>
+
+<!-- To say which component to run -->
+<DefaultRun component="sim1"/>
+
+<Include file="NeuroMLCoreDimensions.xml"/>
+
+<Include file="SBMLlite.xml"/>
+
+<Include file="NetworkML.xml"/>
+<Include file="Simulation.xml"/>
+
+
+<sbmlLite id="sbmlModel1" version="2" level="2">
+
+    <listOfCompartments>
+         <compartment id="defComp" size="1"/>
+    </listOfCompartments>
+
+    <listOfSpecies>
+        <species id="s1" name="s1" compartment="defComp" initialAmount="10" charge="0"/>
+        <species id="s2" name="s2" compartment="defComp" initialAmount="0" charge="0"/>
+        <species id="s3" name="s3" compartment="defComp" initialAmount="5" charge="0"/>
+    </listOfSpecies>
+
+    <listOfParameters>
+        <parameter id="s2_squared" value="0" constant="0"/> <!-- NOT constant="false"/> -->
+    </listOfParameters>
+<!--
+    <listOfRules>
+
+        <assignmentRule variable="s2_squared" math="s2 * s2">  "Converted" from mathml
+        </assignmentRule>
+    </listOfRules>
+ -->
+
+</sbmlLite>
+
+
+<network id="net1">
+    <population id="popMod1" component="sbmlModel1" size="1"/>
+</network>
+
+
+
+<Simulation id="sim1" length="300ms" step="0.01ms" target="net1">
+    <Display title="Ex5: SBML to LEMS..." timeScale="1ms">
+        <Line id="l1" quantity="popMod1[0]/v" scale="1mV"  color="#ff4040"/>
+    </Display>
+</Simulation>
+
+
+</Lems>

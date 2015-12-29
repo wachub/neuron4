@@ -1,0 +1,403 @@
+00028: null
+00035: Problem substituting function definitions in SBML
+00051: Can't find variable C for state variable null
+State variables:
+    S1: S1(none)
+    S2: S2(none)
+00052: Can't find variable C for state variable null
+State variables:
+    S1: S1(none)
+    S2: S2(none)
+    S3: S3(none)
+00053: Can't find variable C for state variable null
+State variables:
+    S1: S1(none)
+    S2: S2(none)
+    S3: S3(none)
+    S4: S4(none)
+00054: null
+00055: null
+00056: null
+00086: Problem substituting function definitions in SBML
+00092: null
+00093: null
+00094: null
+00101: Problem substituting function definitions in SBML
+00102: Problem substituting function definitions in SBML
+00103: Problem substituting function definitions in SBML
+00104: Can't find variable C for state variable null
+State variables:
+    S1: S1(none)
+    S2: S2(none)
+00105: Can't find variable C for state variable null
+State variables:
+    S1: S1(none)
+    S2: S2(none)
+    S3: S3(none)
+00106: Problem substituting function definitions in SBML
+00109: Problem substituting function definitions in SBML
+00110: null
+00111: null
+00112: null
+00124: Problem substituting function definitions in SBML
+00132: Unrecognized variable in expression: (k)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@3415ddf5, S2=S2(none), S1=S1(none), tscale=tscale(per_time), compartment=compartment(none), k_1122997464=k_1122997464(none), k_1122997463=k_1122997463(none)} variable is S2 xSource expression: 0 + (compartment*( k*S1 )) - (compartment* k_1122997463 *S2)
+00162: null
+00163: null
+00164: null
+00165: null
+00166: null
+00167: null
+00168: null
+00169: null
+00170: null
+00173: null
+00178: null
+00179: Problem substituting function definitions in SBML
+00180: Can't find variable S1 for state variable null
+State variables:
+    S2: S2(none)
+00184: Problem substituting function definitions in SBML
+00185: Unrecognized variable in expression: (S2)
+valHM: {S3=DerivedVariable S3 val=k1*S2, t=org.lemsml.type.IndVar@754fcf14, tscale=tscale(per_time), k1=k1(none), k2=k2(none)}  while parsing expression for variable S3; Source expression: k1*S2
+00190: null
+00191: null
+00192: null
+00193: null
+00194: null
+00195: null
+00196: null
+00197: null
+00198: null
+00199: null
+00200: null
+00201: null
+00269: null
+00270: null
+00271: Unrecognized variable in expression: (y)
+valHM: {t=org.lemsml.type.IndVar@2e2acb47, p2=p2(none), p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), compartment=compartment(none)} variable is S2 xSource expression: 0 + (( y ))
+00272: null
+00273: null
+00274: null
+00275: Unrecognized variable in expression: (x)
+valHM: {t=org.lemsml.type.IndVar@166f5ae2, p2=p2(none), p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), compartment=compartment(none)} variable is S2 xSource expression: 0 + (compartment*S1*( x ))
+00276: null
+00277: null
+00278: null
+00279: null
+00284: Problem substituting function definitions in SBML
+00285: Problem substituting function definitions in SBML
+00286: null
+00287: null
+00288: null
+00289: null
+00290: null
+00291: null
+00292: null
+00293: null
+00294: null
+00396: null
+00397: null
+00398: null
+00402: null
+00403: null
+00404: null
+00453: null
+00454: null
+00455: null
+00459: null
+00460: null
+00461: null
+00469: empty String
+00477: Unrecognized variable in expression: (k2)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@19c29f4, p1=p1(none), C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00480: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@30b8afce, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00481: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@7f565474, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00482: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@551a6c8d, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00483: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@48a3abff, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00484: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@315a0b2f, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00485: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@71b508da, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00492: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@44db13b1, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00493: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@154ff210, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00494: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@351ac1a9, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00495: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@6cc58fee, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00496: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@58b942f7, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00497: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@12da876, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00528: Unrecognized variable in expression: (k1)
+valHM: {t=org.lemsml.type.IndVar@54b216b3, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00533: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@6d30f3f5, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00534: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@3f9b12fb, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00536: Unrecognized variable in expression: (k1)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@fc40f32, C=C(none), tscale=tscale(per_time), k2=k2(none)} variable is X0 xSource expression: 0 - (C*k1*X0)
+00537: Unrecognized variable in expression: (k2)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@6ada7c9a, C=C(none), tscale=tscale(per_time), k1=k1(none)} variable is X1 xSource expression: 0 + (C*k2*T)
+00538: Unrecognized variable in expression: (k2)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@773b0c5b, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00539: Unrecognized variable in expression: (C)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@47598095, tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is X0 xSource expression: 0 - (C*k1*X0)
+00540: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@14f5b942, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00541: Unrecognized variable in expression: (C)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@6195bb34, tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is X0 xSource expression: 0 - (C*k1*X0)
+00542: Unrecognized variable in expression: (C)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@10e7e3ef, tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is X0 xSource expression: 0 - (C*k1*X0)
+00544: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@6b660ff1, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00545: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@3de2e788, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00547: Unrecognized variable in expression: (C)
+valHM: {X0=X0(none), T=T(none), X1=X1(none), t=org.lemsml.type.IndVar@38a9219a, tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is X0 xSource expression: 0 - (C*k1*X0)
+00548: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@1f0e5b38, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00567: Problem substituting function definitions in SBML
+00569: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@3eb86609, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00570: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@710765e5, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00571: Problem substituting function definitions in SBML
+00572: Problem substituting function definitions in SBML
+00573: null
+00574: null
+00575: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), t=org.lemsml.type.IndVar@28988edd, p4=p4(none), p3=p3(none), p2=p2(none), p1=p1(none), tscale=tscale(per_time), k1=k1(none)} variable is p1 xSource expression: tscale * (-1*k1*p1*p2+k2*p3+k3*p3)
+00576: null
+00606: Problem substituting function definitions in SBML
+00625: null
+00626: null
+00627: null
+00643: null
+00644: null
+00645: null
+00652: null
+00653: null
+00654: null
+00655: null
+00656: null
+00657: null
+00660: empty String
+00663: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@1c90ca10, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00664: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@a54d24d, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00670: null
+00671: null
+00672: null
+00686: null
+00693: null
+00694: null
+00704: null
+00714: Problem substituting function definitions in SBML
+00715: null
+00716: null
+00721: null
+00728: null
+00734: null
+00742: Problem substituting function definitions in SBML
+00762: Unrecognized variable in expression: (k2)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@76a09298, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3) - (C*k3*S3)
+00777: Unrecognized variable in expression: (k2)
+valHM: {S3=DerivedVariable S3 val=k1*S2, t=org.lemsml.type.IndVar@66942944, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S2 xSource expression: 0 + (C*k2*S1)
+00781: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@7b68d45, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00782: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@929d69e, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00783: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@7e8f362e, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00784: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@948ecbd, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00785: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@58aa5672, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00786: Unrecognized variable in expression: (C)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@33b41492, p1=p1(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00792: Unrecognized variable in expression: (k1)
+valHM: {t=org.lemsml.type.IndVar@4381c7e9, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00794: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@84602d7, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00795: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@6cfb7989, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00796: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@3dad25b6, S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: 0 + (C*k1*S1)
+00800: Unrecognized variable in expression: (k2)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@41e57318, p1=p1(none), C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2) - (C*k2*S3)
+00809: null
+00810: null
+00811: null
+00812: null
+00813: null
+00814: null
+00815: null
+00816: null
+00817: null
+00818: null
+00819: null
+00820: null
+00821: null
+00822: null
+00823: null
+00824: null
+00825: null
+00826: null
+00827: null
+00828: null
+00829: null
+00830: null
+00831: null
+00832: null
+00833: Problem substituting function definitions in SBML
+00834: Problem substituting function definitions in SBML
+00835: null
+00836: null
+00837: null
+00838: null
+00839: null
+00840: null
+00841: null
+00842: null
+00843: null
+00844: null
+00845: null
+00846: null
+00847: null
+00848: null
+00849: null
+00850: null
+00852: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@f3080df, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00853: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@455fcabc, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C*k2*S3*s) - (C*k3*S3*s)
+00855: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@14bc5c96, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (k2*( S1*C*time )) - (k3*( S1*C*time ))
+00856: Problem substituting function definitions in SBML
+00858: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@6b79b415, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00859: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@3531a8ff, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C*k2*S3*s) - (C*k3*S3*s)
+00861: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@566a6bb8, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00862: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@37073255, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C*k2*S3*s) - (C*k3*S3*s)
+00864: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@187d9bc8, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00865: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@4c203951, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C*k2*S3*s) - (C*k3*S3*s)
+00867: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@6d36df08, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00868: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@5100de32, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S4 xSource expression: 0 + (C*k3*S3*s)
+00869: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@6bb7d3b0, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S4 xSource expression: 0 + (C*k3*S3*time)
+00872: null
+00873: null
+00876: null
+00879: empty String
+00882: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@3b724527, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00884: Unrecognized variable in expression: (s)
+valHM: {k3=k3(none), S3=S3(none), t=org.lemsml.type.IndVar@596bb944, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S2 xSource expression: k3*s
+00885: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), k4=k4(none), S4=S4(none), t=org.lemsml.type.IndVar@17beeea7, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S1 xSource expression: k3*time
+00888: Unrecognized variable in expression: (time)
+valHM: {S3=S3(none), t=org.lemsml.type.IndVar@f68701a, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: tscale * (1.5*exp(time)^(-1))
+00890: null
+00892: Unrecognized variable in expression: (e)
+valHM: {t=org.lemsml.type.IndVar@239de86, tscale=tscale(per_time), P1=P1(none), k1=k1(none), k2=k2(none), P2=P2(none)} variable is P1 xSource expression: tscale * (e^(-1*time)*k2*P2)
+00893: Unrecognized variable in expression: (s)
+valHM: {t=org.lemsml.type.IndVar@91c95c0, tscale=tscale(per_time), P1=P1(none), k1=k1(none), P3=P3(none), P2=P2(none)} variable is P3 xSource expression: tscale * (k1*s)
+00895: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@1ac30891, C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00896: Unrecognized variable in expression: (s)
+valHM: {S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@4b93c2e5, k1_1122997462=k1_1122997462(none), k1_1122997463=k1_1122997463(none), C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C* k1_1122997463 *S3*s) - (C* k1_1122997462 *S3*s)
+00897: Unrecognized variable in expression: (time)
+valHM: {S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@27af9da2, C=C(none), S2=S2(none), k2_1122997464=k2_1122997464(none), S1=S1(none), tscale=tscale(per_time), k2_1122997462=k2_1122997462(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C* k2_1122997462 *S3*time)
+00899: Unrecognized variable in expression: (time)
+valHM: {k3=k3(none), S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@414d0eec, p1=p1(none), C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none), k2=k2(none)} variable is S3 xSource expression: 0 + (C*k2*S2*time) - (C*k3*S3*time)
+00900: Unrecognized variable in expression: (s)
+valHM: {S3=S3(none), S4=S4(none), t=org.lemsml.type.IndVar@4c01e765, k1_1122997462=k1_1122997462(none), k1_1122997463=k1_1122997463(none), p1=p1(none), C=C(none), S2=S2(none), S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S3 xSource expression: 0 + (C*k1*S1*S2*s) - (C* k1_1122997463 *S3*s) - (C* k1_1122997462 *S3*s)
+00901: Can't find variable c for state variable null
+State variables:
+00902: Can't find variable c for state variable null
+State variables:
+00903: Can't find variable C1 for state variable null
+State variables:
+00904: Can't find variable c for state variable null
+State variables:
+00905: Can't find variable c for state variable null
+State variables:
+00906: Can't find variable c for state variable null
+State variables:
+00907: Can't find variable c for state variable null
+State variables:
+00908: Can't find variable C1 for state variable null
+State variables:
+00909: Can't find variable C1 for state variable null
+State variables:
+00910: Can't find variable C1 for state variable null
+State variables:
+00911: Can't find variable c for state variable null
+State variables:
+00912: Can't find variable c for state variable null
+State variables:
+00913: Can't find variable c for state variable null
+State variables:
+00914: Can't find variable c for state variable null
+State variables:
+00915: Can't find variable c for state variable null
+State variables:
+00916: Can't find variable c for state variable null
+State variables:
+00917: Can't find variable c for state variable null
+State variables:
+00918: Can't find variable c for state variable null
+State variables:
+00919: Can't find variable c for state variable null
+State variables:
+00920: empty String
+00926: Can't find variable c for state variable null
+State variables:
+    s: s(none)
+00927: Can't find variable c for state variable null
+State variables:
+    s: s(none)
+00933:  too many children left in container: 3
+Node: (S1 less_than 0.1)
+Node: and
+Node: (S2 less_than 0.95)
+
+00936: null
+00937: Unrecognized variable in expression: (time)
+valHM: {t=org.lemsml.type.IndVar@2fe80d90, tscale=tscale(per_time), y=DerivedVariable y val=2+delay(x, 0.2), x=DerivedVariable x val=sin(10*time)}  while parsing expression for variable x; Source expression: sin(10*time)
+00938: null
+00939: null
+00940: null
+00941: null
+00942: null
+00943: null
+00945: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@75f369e6, S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S1 xSource expression: 0 + (C*k1/S1)
+00947: Unrecognized variable in expression: (C)
+valHM: {t=org.lemsml.type.IndVar@72df520e, S1=S1(none), tscale=tscale(per_time), k1=k1(none)} variable is S1 xSource expression: 0 + (C*k1/S1)
+00949: examples/case00949_time.dat (No such file or directory)
+00950: For input string: "INF"
+00951: empty String
+00954: null
+00955: Unrecognized variable in expression: (time)
+valHM: {P29=DerivedVariable P29 val=(time)^(0.5), P44=DerivedVariable P44 val=3*time, P26=DerivedVariable P26 val=time^(time), P24=DerivedVariable P24 val=time^(2), P25=DerivedVariable P25 val=2^(time), P22=DerivedVariable P22 val=log(10, time+1), P20=DerivedVariable P20 val=log(time+1), P43=DerivedVariable P43 val=2/(time+1), P42=DerivedVariable P42 val=2-time, P41=DerivedVariable P41 val=2+time, P40=DerivedVariable P40 val=time*3, tscale=tscale(per_time), P11=DerivedVariable P11 val=ceil(-time), P14=DerivedVariable P14 val=cos(-time), P13=DerivedVariable P13 val=cos(time), P9=DerivedVariable P9 val=actan(-time), P16=DerivedVariable P16 val=exp(-time), P8=DerivedVariable P8 val=actan(time), P15=DerivedVariable P15 val=exp(time), P18=DerivedVariable P18 val=floor(time), P37=DerivedVariable P37 val=time+2, P5=DerivedVariable P5 val=acos(-time), P38=DerivedVariable P38 val=time-2, P4=DerivedVariable P4 val=acos(time), P19=DerivedVariable P19 val=floor(-time), P39=DerivedVariable P39 val=time/2, P7=DerivedVariable P7 val=acsin(-time), P6=DerivedVariable P6 val=acsin(time), P1=DerivedVariable P1 val=time, P34=DerivedVariable P34 val=tan(time), P35=DerivedVariable P35 val=tan(-time), P3=DerivedVariable P3 val=abs(-time), P2=DerivedVariable P2 val=abs(time), P32=DerivedVariable P32 val=sin(-time), t=org.lemsml.type.IndVar@22e85762, P31=DerivedVariable P31 val=sin(time), P10=DerivedVariable P10 val=ceil(time)}  while parsing expression for variable P1; Source expression: time
+00956: empty String
+00957: Unrecognized variable in expression: (pi)
+valHM: {P28=DerivedVariable P28 val=e, P29=DerivedVariable P29 val=exp(e), P26=DerivedVariable P26 val=accsch(0.01), P27=DerivedVariable P27 val=accoth(8.2), P24=DerivedVariable P24 val=actanh(-0.7), P25=DerivedVariable P25 val=acsech(0.42), P22=DerivedVariable P22 val=acsinh(99), P23=DerivedVariable P23 val=accos(1.34), P21=DerivedVariable P21 val=accot(-0.1), P20=DerivedVariable P20 val=accsc(1.1), tscale=tscale(per_time), P12=DerivedVariable P12 val=piecewise(2, true xor false, 3), P11=DerivedVariable P11 val=piecewise(2, true or false, 3), P14=DerivedVariable P14 val=sec(0.5), P13=DerivedVariable P13 val=piecewise(2, not(false), 3), P9=DerivedVariable P9 val=(4)!, P16=DerivedVariable P16 val=cot(0.2), P8=DerivedVariable P8 val=piecewise(2, P1 != pi, 3), P15=DerivedVariable P15 val=csc(4.5), P18=DerivedVariable P18 val=cosh(1.7), P17=DerivedVariable P17 val=sin(0.3), P5=DerivedVariable P5 val=piecewise(2, 1 < 0.5, 3), P4=DerivedVariable P4 val=piecewise(2, 1 >= 0.5, 3), P19=DerivedVariable P19 val=acsec(2.3), P7=DerivedVariable P7 val=piecewise(2, P1 == pi, 3), P6=DerivedVariable P6 val=piecewise(2, 1 <= 0.5, 3), P1=DerivedVariable P1 val=pi, P3=DerivedVariable P3 val=piecewise(2, 1 > 0.5, 3), t=org.lemsml.type.IndVar@159bd4f5, P10=DerivedVariable P10 val=piecewise(2, true and false, 3)}  while parsing expression for variable P1; Source expression: pi
+00958: empty String
+00959: null

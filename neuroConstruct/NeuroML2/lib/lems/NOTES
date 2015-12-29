@@ -1,0 +1,3 @@
+This is a version of the LEMS jar file which compatible with the current build of libNeuroML.
+
+Note that ideally, this is identical to the LEMS jar that would be built in ../../LEMS, but as both libNeuroML and LEMS are still in development, it is best that the jar here represents a stable version of LEMS that libNeuroML can use.

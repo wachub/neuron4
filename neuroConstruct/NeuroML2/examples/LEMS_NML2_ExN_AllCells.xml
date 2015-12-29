@@ -1,0 +1,79 @@
+<Lems>
+
+        <!-- AllCells: A number of different cell models in one file.
+             Used mainly to test graph generation & to have a LEMS file which includes 
+             a number of the example pure NeuroML 2 files to test compatibility...-->
+
+        <!-- This is a file which can be read and executed by the LEMS Interpreter.
+             It imports the LEMS definitions of the core NeuroML 2 Components, creates 
+             a model in "pure" NeuroML 2 and contains some LEMS elements for running 
+             a simulation -->
+
+
+<!-- Specify which component to run -->
+<DefaultRun component="sim1"/>
+
+<!-- Include core NeuroML2 ComponentType definitions -->
+<Include file="NeuroML2CoreTypes/Cells.xml"/>
+<Include file="NeuroML2CoreTypes/Networks.xml"/>
+<Include file="NeuroML2CoreTypes/Simulation.xml"/>
+
+        <!-- Including files with <neuroml> root, "real" NeuroML 2 files -->
+<Include file="NML2_SingleCompHHCell.nml"/>
+<Include file="NML2_AbstractCells.nml"/>
+
+<!-- Note these are not yet used in the simulation below, but are included here to aid
+     testing of compatibility of example files with LEMS -->
+<Include file="NML2_SynapseTypes.nml"/> 
+
+        <!-- Main NeuroML2 content -->
+
+<iafTauRefCell id="iafTauRef" leakReversal="-50mV" thresh="-55mV" reset="-70mV" tau="30ms" refract="10ms"/>
+
+<pointCellCondBased id="hhPointCell" C="10pF"  v0="-65mV" thresh="20mV">
+
+    <channelPopulation id="leak" ionChannel="passive" number="300" erev="-60mV"/>
+    <channelPopulation id="naChans" ionChannel="na" number="120000" erev="50mV"/>
+    <channelPopulation id="kChans" ionChannel="k" number="36000" erev="-77mV"/>
+
+</pointCellCondBased>
+
+
+
+<pulseGenerator id="pulseGenA" delay="50ms" duration="200ms" amplitude="0.08nA"/>
+<pulseGenerator id="pulseGenB" delay="100ms" duration="100ms" amplitude="0.08nA"/>
+
+
+<network id="netAll">
+    <population id="izpop" component="izBurst" size="4"/>
+    <population id="iafpop" component="iafTau" size="3"/>
+    <population id="iafCellpop" component="iafCell" size="2"/>
+    <population id="adExpop" component="adExBurst" size="2"/>
+    <population id="iafTauRefPop" component="iafTauRef" size="1"/>
+
+    <population id="hhpop" component="hhcell" size="1"/>
+    <population id="hhPointPop" component="hhPointCell" size="3"/>
+    
+    <explicitInput target="hhPointPop[0]" input="pulseGenA"/>
+    <explicitInput target="hhpop[0]" input="pulseGenB"/>
+</network>
+
+        <!-- End of NeuroML2 content -->
+
+<Simulation id="sim1" length="300ms" step="0.005ms" target="netAll">
+    <Display title="ExCells: A number of different cell models in one file, used mainly to test graph generation..." timeScale="1ms">
+
+        <Line id="l1" quantity="izpop[0]/v" scale="1mV"  color="#ffaaaa"/>
+        <Line id="l2" quantity="iafpop[0]/v" scale="1mV"  color="#ddaadd"/>
+        <Line id="l3" quantity="adExpop[0]/v" scale="1mV"  color="#ddaa00"/>
+        <Line id="l5" quantity="iafTauRefPop[0]/v" scale="1mV"  color="#0000FF" />
+        <Line id="l7" quantity="iafCellpop[0]/v" scale="1mV"  color="#11aadd"/>
+
+
+        <Line id="l6" quantity="hhPointPop[0]/v" scale="1mV"  color="#ff4040"/>
+        <Line id="l4" quantity="hhpop[0]/v" scale="1mV"  color="#00aa00"/>
+    </Display>
+</Simulation>
+
+
+</Lems>

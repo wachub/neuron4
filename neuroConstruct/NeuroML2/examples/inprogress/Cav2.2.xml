@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channelml xmlns:meta="http://morphml.org/metadata/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://morphml.org/channelml/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  http://www.neuroml.org/NeuroMLValidator/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd" units="Physiological Units">
+  <meta:notes>A ion channel model from Channelpedia(www.channelpedia.net)</meta:notes>
+  <channel_type name="Cav2.2">
+    <status value="stable">
+      <meta:comment>TBD</meta:comment>
+      <meta:contributor>
+        <meta:name>Rajnish Ranjan</meta:name>
+      </meta:contributor>
+    </status>
+    <meta:notes>Cav2.2 channel, with rate equations expressed in tau and inf form</meta:notes>
+    <meta:authorList>
+      <meta:modelAuthor>
+        <meta:name>Ranjan, R.</meta:name>
+      </meta:modelAuthor>
+      <meta:modelTranslator>
+        <meta:name>Rajnish Ranjan</meta:name>
+        <meta:institution>EPFL</meta:institution>
+        <meta:email>ranjan.rajnish-at-epfl.ch</meta:email>
+      </meta:modelTranslator>
+    </meta:authorList>
+    <meta:publication>
+      <meta:fullTitle>Activation and inactivation properties of voltage-gated calcium currents in developing cat retinal ganglion cells. Neuroscience, ChannelML 1998,85,239-47</meta:fullTitle>
+      <meta:pubmedRef>http://www.ncbi.nlm.nih.gov/pubmed/9607715</meta:pubmedRef>
+    </meta:publication>
+    <meta:neuronDBref>
+      <meta:modelName>Cav2.2_79</meta:modelName>
+      <meta:uri>channelpedia.net/icmodel/getchannelMLfile/79/6</meta:uri>
+    </meta:neuronDBref>
+    <current_voltage_relation default_erev="135.0" cond_law="ohmic" default_gmax="1" ion="Ca">
+      <q10_settings q10_factor="1" experimental_temp="36.0"/>
+      <gate instances="2" name="m">
+        <closed_state id="m0"/>
+        <open_state id="m"/>
+        <transition expr="(0.1*(v-20)/(1-exp(-(v-20)/10)))" to="m" name="alpha" from="m0" expr_form="generic"/>
+        <transition expr="0.4*exp(-(v+25)/18)" to="m0" name="beta" from="m" expr_form="generic"/>
+      </gate>
+      <gate instances="1" name="h">
+        <closed_state id="h0"/>
+        <open_state id="h"/>
+        <transition expr="0.01*exp(-(v+50)/10)" to="h" name="alpha" from="h0" expr_form="generic"/>
+        <transition expr="0.1/(1+exp(-(v+17)/17))" to="h0" name="beta" from="h" expr_form="generic"/>
+      </gate>
+    </current_voltage_relation>
+  </channel_type>
+</channelml>

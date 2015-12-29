@@ -1,0 +1,20 @@
+This is an initial attempt to create a LEMS & NeuroML 2 API for Python (libNeuroML).
+
+Install the Python module using: 
+
+	python setup.py install
+
+Module lxml is required. Install using easy_install or your package manager.
+
+You will have to add the environment variable NML2_HOME, pointing to the dir with
+the main libNeuroML jar file (usually the parent directory of this directory) where
+the nml2 utility is found. Also add this dir to your PATH. This is to allow the
+Python scripts to execute nml2 (or nml2.bat on Win). It's also useful for running
+nml2 manually from any other folder.
+
+Go in to examples dir and run one of the examples, e.g.:
+
+	python run_adex.py
+
+
+Padraig Gleeson Mar 2012

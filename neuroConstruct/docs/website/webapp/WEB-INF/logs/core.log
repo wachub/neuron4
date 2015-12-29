@@ -1,0 +1,2 @@
+WARN    (2012-08-23) 15:48.25:297   [core.language.java] (Unknown-URI) Unknown-Thread/JavaLanguage: Attempted to retrieve directory listing of non-directory /usr/java/packages/lib/ext
+WARN    (2012-08-23) 15:48.25:598   [core.modules.mapper.lm] (Unknown-URI) Unknown-Thread/MountNode: Failed to mount locationmap at: cocoon://locationmap-project.xml

@@ -1,0 +1,15 @@
+
+export LIB_NEUROML_VERSION=2.0.0
+export LEMS_VERSION=0.8.3
+
+export CLASSPATH=.:libNeuroML-$LIB_NEUROML_VERSION.jar:lib/lems/lems-$LEMS_VERSION.jar:$NML2_HOME/libNeuroML-$LIB_NEUROML_VERSION.jar:$NML2_HOME/lib/lems/lems-$LEMS_VERSION.jar
+
+export NML2_MAX_MEMORY=450M 
+
+if [ -n "$NML2_MAX_MEMORY_LOCAL" ]; then
+    export NML2_MAX_MEMORY=$NML2_MAX_MEMORY_LOCAL
+fi
+
+echo Running the NeuroML 2/LEMS utility...
+
+java -Xmx$NML2_MAX_MEMORY -classpath $CLASSPATH org.neuroml.Main $1 $2 $3 $4

@@ -1,0 +1,4 @@
+To install the SBML test suite type:
+mkdir sbmlTestSuite
+cd sbmlTestSuite
+svn co https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/test-suite/cases/ 

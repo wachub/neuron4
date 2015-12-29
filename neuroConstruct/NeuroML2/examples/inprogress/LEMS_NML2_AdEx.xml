@@ -1,0 +1,55 @@
+<Lems>
+
+        <!-- Example with Adaptive exponential integrate-and-fire model -->
+
+        <!-- This is a file which can be read and executed by the LEMS Interpreter.
+             It imports the LEMS definitions of the core NeuroML 2 Components, creates 
+             a model in "pure" NeuroML 2 and contains some LEMS elements for running 
+             a simulation -->
+
+
+<!-- Specify which component to run -->
+<DefaultRun component="sim1"/>
+
+<!-- Include core NeuroML2 ComponentClass definitions -->
+<Include file="NeuroML2CoreTypes/Cells.xml"/>
+<Include file="NeuroML2CoreTypes/PyNN.xml"/>
+<Include file="NeuroML2CoreTypes/Networks.xml"/>
+<Include file="NeuroML2CoreTypes/Simulation.xml"/>
+
+
+        <!-- Main NeuroML2 content. http://www.scholarpedia.org/article/Adaptive_exponential_integrate-and-fire_model -->
+
+
+<adExIaFCell id="adExBurst2"     C="281pF" gL="30nS" EL="-70.6mV" reset="-48.5mV" VT = "-50.4mV" 
+      thresh = "-40.4mV" delT="2mV" tauw="40ms"  a ="4nS"   b = "0.1nA" refract="2ms"
+      Iamp="0.8nA"  Idel="0ms"   Idur="2000ms"/>
+
+
+<EIF_cond_alpha_isfa_ista id="EIF1" a="0.004" b="0.1" cm="0.281"
+    delta_T="2.0" e_rev_E="0.0" e_rev_I="-80.0" i_offset="0.8" tau_m="9.3667" tau_refrac="2" tau_syn_E="5.0"
+    tau_syn_I="5.0" tau_w="40.0" v_init="-70.6" v_reset="-48.5" v_rest="-70.6" v_spike="-40.4" v_thresh="-50.4"/>
+
+<network id="net1">
+    <population id="adExPop1" component="adExBurst2" size="1"/>
+    <population component="EIF1" id="pop_EIF" size="1"/>
+</network>
+
+        <!-- End of NeuroML2 content -->
+        
+
+<Simulation id="sim1" length="300ms" step="0.025ms" target="net1">
+
+    <Display id="d1" title="Ex8: Adaptive exponential cell: 2 spike burst" timeScale="1ms">
+        <Line id ="adEx1" quantity="adExPop1[0]/v" scale="1mV"  color="#ee40FF" save="examples/testResults/adEx_V1.dat"/>
+        <Line id ="adEx2" quantity="adExPop1[0]/w" scale="0.01nA"  color="#BBA0AA" save="examples/testResults/adEx_w1.dat"/>
+    </Display>
+    <Display id="display_1" timeScale="1ms" title="PyNN EIF model run in LEMS">
+        <Line color="#ee40FF" id="line_pop_EIF_cond_exp_isfa_ista" quantity="pop_EIF[0]/v" save="pop_EIF_v_nml2.dat" scale="1mV"/>
+        <Line color="#BBA0AA" id="line_pop_EIF_cond_exp_isfa_ista" quantity="pop_EIF[0]/w" save="pop_EIF_w_nml2.dat" scale="0.01"/>
+    </Display>
+
+    
+</Simulation>
+
+</Lems>

@@ -1,0 +1,119 @@
+
+<Lems>
+
+    <DefaultRun component="sim1"/>
+
+    <Include file="NeuroML2CoreTypes/NeuroMLCoreDimensions.xml"/>
+    <Include file="NeuroML2CoreTypes/Cells.xml"/>
+    <Include file="NeuroML2CoreTypes/Networks.xml"/>
+    <Include file="NeuroML2CoreTypes/Simulation.xml"/>
+
+    <Include file="Cav2.2.nml"/>
+
+
+
+    <ComponentClass xmlns="CoMoDL" name="testVoltage" extends="abstractCellMembPot"
+            description="Not yet fully tested!!!"> <!-- Note: a synpase also extends pointCurrent -->
+
+        <Parameter name="delay" dimension="time"/>
+        <Parameter name="duration" dimension="time"/>
+        <Parameter name="baseVoltage" dimension="voltage"/>
+        <Parameter name="targetVoltage" dimension="voltage"/>
+
+        <Children name="populations" compClass="channelPopulation"/>
+
+
+        <Dynamics>
+
+            <StateVariable name="v" exposure="v" dimension="voltage"/>
+
+            <OnStart>
+                <StateAssignment variable="v" value="baseVoltage"/>
+            </OnStart>
+
+
+            <OnCondition test="t .geq. delay .and. t .lt. duration+delay">
+                <StateAssignment variable="v" value="targetVoltage"/>
+            </OnCondition>
+
+            <OnCondition test="t .gt. duration+delay">
+                <StateAssignment variable="v" value="baseVoltage"/>
+            </OnCondition>
+
+        </Dynamics>
+
+    </ComponentClass>
+    
+    <ionChannel conductance="10pS" type="ionChannelHH" id="Cav" species="Ca">
+        <notes>Cav2.2 channel, with rate equations expressed in tau and inf form</notes>
+        <gate instances="2" type="gateHH" id="m">
+            <q10Settings experimentalTemp="36.0 degC" celsius="16 degC" type="q10ExpTemp" q10Factor="1"/>
+            <forwardRate type="Cav2.2_m_alpha_rate"/>
+            <reverseRate type="Cav2.2_m_beta_rate"/>
+        </gate>
+        <gate instances="1" type="gateHH" id="h">
+            <q10Settings experimentalTemp="36.0 degC" celsius="16 degC" type="q10ExpTemp" q10Factor="1"/>
+            <forwardRate type="Cav2.2_h_alpha_rate"/>
+            <reverseRate type="Cav2.2_h_beta_rate"/>
+        </gate>
+    </ionChannel>
+
+
+    <testVoltage id="holderCell0" delay="10ms" duration="30ms" baseVoltage="-60mV" targetVoltage="-70mV">
+        <channelPopulation id="CavChan" ionChannel="Cav" number="1" erev="80mV"/>
+    </testVoltage>
+
+    <testVoltage id="holderCell1" delay="10ms" duration="30ms" baseVoltage="-60mV" targetVoltage="-50mV">
+        <channelPopulation id="CavChan" ionChannel="Cav" number="1" erev="80mV"/>
+    </testVoltage>
+
+    <testVoltage id="holderCell2" delay="10ms" duration="30ms" baseVoltage="-60mV" targetVoltage="-40mV">
+        <channelPopulation id="CavChan" ionChannel="Cav" number="1" erev="80mV"/>
+    </testVoltage>
+
+    <testVoltage id="holderCell3" delay="10ms" duration="30ms" baseVoltage="-60mV" targetVoltage="-30mV">
+        <channelPopulation id="CavChan" ionChannel="Cav" number="1" erev="80mV"/>
+    </testVoltage>
+
+    <testVoltage id="holderCell4" delay="10ms" duration="30ms" baseVoltage="-60mV" targetVoltage="-20mV">
+        <channelPopulation id="CavChan" ionChannel="Cav" number="1" erev="80mV"/>
+    </testVoltage>
+
+    <network id="net1">
+        <population id="holderCellPop0" component="holderCell0" size="1"/>
+        <population id="holderCellPop1" component="holderCell1" size="1"/>
+        <population id="holderCellPop2" component="holderCell2" size="1"/>
+        <population id="holderCellPop3" component="holderCell3" size="1"/>
+        <population id="holderCellPop4" component="holderCell4" size="1"/>
+    </network>
+
+    <Simulation id="sim1" length="50ms" step="0.01ms" target="net1">
+
+        <Display id="d2" title="Channel voltage (mV)" timeScale="1ms">
+            <Line id ="l0" quantity="holderCellPop0[0]/v" scale="1mV"  color="#FFFFFF" save="volt0.dat"/>
+            <Line id ="l1" quantity="holderCellPop1[0]/v" scale="1mV"  color="#FF00FF" save="volt1.dat"/>
+            <Line id ="l2" quantity="holderCellPop2[0]/v" scale="1mV"  color="#FFFF00" save="volt2.dat"/>
+            <Line id ="l3" quantity="holderCellPop3[0]/v" scale="1mV"  color="#00FFFF" save="volt3.dat"/>
+            <Line id ="l4" quantity="holderCellPop4[0]/v" scale="1mV"  color="#FF0000" save="volt4.dat"/>
+        </Display>
+
+        <Display id="d3" title="Channel conductance (nS)" timeScale="1ms">
+            <Line id ="l0" quantity="holderCellPop0[0]/CavChan/Cav/g" scale="1nS"  color="#1111FF" save="cond0.dat"/>
+            <Line id ="l1" quantity="holderCellPop1[0]/CavChan/Cav/g" scale="1nS"  color="#ff1111" save="cond1.dat"/>
+            <Line id ="l2" quantity="holderCellPop2[0]/CavChan/Cav/g" scale="1nS"  color="#11ff2F" save="cond2.dat"/>
+            <Line id ="l3" quantity="holderCellPop3[0]/CavChan/Cav/g" scale="1nS"  color="#ffffF3" save="cond3.dat"/>
+            <Line id ="l4" quantity="holderCellPop4[0]/CavChan/Cav/g" scale="1nS"  color="#44ffF3" save="cond4.dat"/>
+        </Display>
+
+        <Display id="d4" title="Channel current (nA)" timeScale="1ms">
+            <Line id ="l0" quantity="holderCellPop0[0]/CavChan/i" scale="1nA"  color="#11FFFF" save="curr0.dat"/>
+            <Line id ="l1" quantity="holderCellPop1[0]/CavChan/i" scale="1nA"  color="#1111FF" save="curr1.dat"/>
+            <Line id ="l2" quantity="holderCellPop2[0]/CavChan/i" scale="1nA"  color="#122FFF" save="curr2.dat"/>
+            <Line id ="l3" quantity="holderCellPop3[0]/CavChan/i" scale="1nA"  color="#1333FF" save="curr3.dat"/>
+            <Line id ="l4" quantity="holderCellPop4[0]/CavChan/i" scale="1nA"  color="#14444F" save="curr4.dat"/>
+        </Display>
+
+    </Simulation>
+
+
+</Lems>

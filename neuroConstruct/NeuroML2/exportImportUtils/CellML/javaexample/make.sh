@@ -1,0 +1,1 @@
+javac -cp ~/Soft/cellml-sdk-1.11-Linux-x86_64/lib/cellml.jar:src src/example/CreateModelTest.java 

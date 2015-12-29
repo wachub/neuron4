@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+NineML export from LEMS of model:
+
+Components:
+    izBurst (izhikevichCell:  v0=-0.07 (SI voltage) a=0.02 (none) b=0.2 (none) c=-50.0 (none) d=2.0 (none) thresh=0.03 (SI voltage) Iamp=15.0 (none) Idel=0.022 (SI time) Idur=2.0 (SI time) MSEC=0.001 (SI time) MVOLT=0.001 (SI voltage))
+    izTonic (izhikevichCell:  v0=-0.07 (SI voltage) a=0.02 (none) b=0.2 (none) c=-65.0 (none) d=6.0 (none) thresh=0.03 (SI voltage) Iamp=14.0 (none) Idel=0.02 (SI time) Idur=2.0 (SI time) MSEC=0.001 (SI time) MVOLT=0.001 (SI voltage))
+    izMixed (izhikevichCell:  v0=-0.07 (SI voltage) a=0.02 (none) b=0.2 (none) c=-55.0 (none) d=4.0 (none) thresh=0.03 (SI voltage) Iamp=10.0 (none) Idel=0.02 (SI time) Idur=2.0 (SI time) MSEC=0.001 (SI time) MVOLT=0.001 (SI voltage))
+    net1 (network: )
+    sim1 (Simulation:  length=0.2 (SI time) step=5.0E-6 (SI time))
+
+-->
+
+
+<!--Adding simulation Component(id=sim1 type=Simulation) of network: net1 (network: )-->
+
+<NineML xmlns="http://nineml.org/9ML/0.2" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:comodl="CoMoDL"
+    xsi:schemaLocation="http://nineml.org/9ML/0.2 http://neuroml.svn.sourceforge.net/viewvc/neuroml/NeuroML2/Schemas/NineML/NineML_v0.2.xsd">
+
+    <!--Population izpopBurst contains components of: Component(id=izBurst type=izhikevichCell)-->
+
+    <ComponentClass name="izhikevichCell" xmlns="CoMoDL">
+        <Parameter name="v0" dimension="none"/>
+        <Parameter name="a" dimension="none"/>
+        <Parameter name="b" dimension="none"/>
+        <Parameter name="c" dimension="none"/>
+        <Parameter name="d" dimension="none"/>
+        <Parameter name="thresh" dimension="none"/>
+        <Parameter name="Iamp" dimension="none"/>
+        <Parameter name="Idel" dimension="none"/>
+        <Parameter name="Idur" dimension="none"/>
+        <Parameter name="MSEC" dimension="none"/>
+        <Parameter name="MVOLT" dimension="none"/>
+        <AnalogPort name="v" mode="send" dimension="none"/>
+        <AnalogPort name="U" mode="send" dimension="none"/>
+        <AnalogPort name="I" mode="send" dimension="none"/>
+        <Dynamics>
+            <Regime name="default_regime">
+                <TimeDerivative name="v_equation" variable="v">
+                    <MathInline>
+                            ((((0.04 * ((v ^ 2) / MVOLT)) + (5 * v)) + (((140.0 - U) + I) * MVOLT)) / MSEC)
+                    </MathInline>
+                </TimeDerivative>
+                <TimeDerivative name="U_equation" variable="U">
+                    <MathInline>
+                            (a * (((b * (v / MVOLT)) - U) / MSEC))
+                    </MathInline>
+                </TimeDerivative>
+                <!--Adding check for v .gt. thresh-->
+                <OnCondition>
+                    <Trigger>
+                        <MathInline>
+                                v .gt. thresh
+                        </MathInline>
+                    </Trigger>
+                    <StateAssignment variable="v">
+                        <MathInline>
+                                (c * MVOLT)
+                        </MathInline>
+                    </StateAssignment>
+                    <StateAssignment variable="U">
+                        <MathInline>
+                                (U + d)
+                        </MathInline>
+                    </StateAssignment>
+                    <EventOut port="a"/>
+                </OnCondition>
+                <!--Adding check for t .gt. Idel .and. t .lt. Idel+Idur-->
+                <OnCondition>
+                    <Trigger>
+                        <MathInline>
+                                t .gt. Idel .and. t .lt. Idel+Idur
+                        </MathInline>
+                    </Trigger>
+                    <StateAssignment variable="I">
+                        <MathInline>
+                                Iamp
+                        </MathInline>
+                    </StateAssignment>
+                </OnCondition>
+                <!--Adding check for t .gt. Idel+Idur-->
+                <OnCondition>
+                    <Trigger>
+                        <MathInline>
+                                t .gt. Idel+Idur
+                        </MathInline>
+                    </Trigger>
+                    <StateAssignment variable="I">
+                        <MathInline>
+                                0
+                        </MathInline>
+                    </StateAssignment>
+                </OnCondition>
+            </Regime>
+        </Dynamics>
+    </ComponentClass>
+
+    <!--Population izpopTonic contains components of: Component(id=izTonic type=izhikevichCell)-->
+
+
+    <!--Population izpopMixed contains components of: Component(id=izMixed type=izhikevichCell)-->
+
+
+    <!--Component izBurst is an instance of: izhikevichCell-->
+
+    <component name="izBurst">
+        <definition language="NineML">
+            <url>.</url>
+            <!--Note: there needs to be some way to indentify the component (type) of this component...-->
+            <componentType>izhikevichCell</componentType>
+        </definition>
+        <property name="v0">
+            <quantity>
+                <value>
+                    <scalar>-0.07</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="a">
+            <quantity>
+                <value>
+                    <scalar>0.02</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="b">
+            <quantity>
+                <value>
+                    <scalar>0.2</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="c">
+            <quantity>
+                <value>
+                    <scalar>-50.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="d">
+            <quantity>
+                <value>
+                    <scalar>2.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="thresh">
+            <quantity>
+                <value>
+                    <scalar>0.03</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Iamp">
+            <quantity>
+                <value>
+                    <scalar>15.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idel">
+            <quantity>
+                <value>
+                    <scalar>0.022</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idur">
+            <quantity>
+                <value>
+                    <scalar>2.0</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MSEC">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MVOLT">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+    </component>
+
+    <!--Component izTonic is an instance of: izhikevichCell-->
+
+    <component name="izTonic">
+        <definition language="NineML">
+            <url>.</url>
+            <!--Note: there needs to be some way to indentify the component (type) of this component...-->
+            <componentType>izhikevichCell</componentType>
+        </definition>
+        <property name="v0">
+            <quantity>
+                <value>
+                    <scalar>-0.07</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="a">
+            <quantity>
+                <value>
+                    <scalar>0.02</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="b">
+            <quantity>
+                <value>
+                    <scalar>0.2</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="c">
+            <quantity>
+                <value>
+                    <scalar>-65.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="d">
+            <quantity>
+                <value>
+                    <scalar>6.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="thresh">
+            <quantity>
+                <value>
+                    <scalar>0.03</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Iamp">
+            <quantity>
+                <value>
+                    <scalar>14.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idel">
+            <quantity>
+                <value>
+                    <scalar>0.02</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idur">
+            <quantity>
+                <value>
+                    <scalar>2.0</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MSEC">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MVOLT">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+    </component>
+
+    <!--Component izMixed is an instance of: izhikevichCell-->
+
+    <component name="izMixed">
+        <definition language="NineML">
+            <url>.</url>
+            <!--Note: there needs to be some way to indentify the component (type) of this component...-->
+            <componentType>izhikevichCell</componentType>
+        </definition>
+        <property name="v0">
+            <quantity>
+                <value>
+                    <scalar>-0.07</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="a">
+            <quantity>
+                <value>
+                    <scalar>0.02</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="b">
+            <quantity>
+                <value>
+                    <scalar>0.2</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="c">
+            <quantity>
+                <value>
+                    <scalar>-55.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="d">
+            <quantity>
+                <value>
+                    <scalar>4.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="thresh">
+            <quantity>
+                <value>
+                    <scalar>0.03</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Iamp">
+            <quantity>
+                <value>
+                    <scalar>10.0</scalar>
+                    <unit></unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idel">
+            <quantity>
+                <value>
+                    <scalar>0.02</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="Idur">
+            <quantity>
+                <value>
+                    <scalar>2.0</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MSEC">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>s</unit>
+                </value>
+            </quantity>
+        </property>
+        <property name="MVOLT">
+            <quantity>
+                <value>
+                    <scalar>0.001</scalar>
+                    <unit>V</unit>
+                </value>
+            </quantity>
+        </property>
+    </component>
+    <group name="sim1">
+
+        <!--Population izpopBurst contains components of: Component(id=izBurst type=izhikevichCell)-->
+
+        <population name="izpopBurst">
+            <number>1</number>
+            <prototype>izBurst</prototype>
+        </population>
+
+        <!--Population izpopTonic contains components of: Component(id=izTonic type=izhikevichCell)-->
+
+        <population name="izpopTonic">
+            <number>1</number>
+            <prototype>izTonic</prototype>
+        </population>
+
+        <!--Population izpopMixed contains components of: Component(id=izMixed type=izhikevichCell)-->
+
+        <population name="izpopMixed">
+            <number>1</number>
+            <prototype>izMixed</prototype>
+        </population>
+    </group>
+</NineML>

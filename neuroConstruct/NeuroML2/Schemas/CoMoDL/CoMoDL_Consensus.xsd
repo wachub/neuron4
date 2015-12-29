@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    CoMoDL (the Common Model Description Language) is an attempt to specify a format for
+    the intersection between the elements used in the NineML Abstraction Layer and those used
+    by LEMS (Low Entropy Model Specification) for defining model component behaviour.
+
+    This file contains the agreed elements between NineML and LEMS
+    
+-->
+
+<xs:schema targetNamespace="CoMoDL"
+    xmlns="CoMoDL"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+
+    <!-- for Parameter, StateVariable etc. -->
+    <xs:complexType name="NamedDimensionalType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>
+
+
+

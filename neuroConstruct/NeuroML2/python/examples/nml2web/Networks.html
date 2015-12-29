@@ -1,0 +1,599 @@
+<html>
+  <head>
+    <title>Networks</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css"> td { font-size: 14; } </style>
+    <!--<style type="text/css"> body { padding-top: 90px; padding-bottom: 30px;  padding-left: 50px;  padding-right:50px; } </style>-->
+  </head>
+<body>
+
+<div class="navbar ">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">NeuroML 2 Component Types</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="Cells.html">Cells</a></li>
+          <li><a href="Synapses.html">Synapses</a></li>
+          <li><a href="Channels.html">Channels</a></li>
+          <li><a href="Inputs.html">Inputs</a></li>
+          <li class="active"><a href="Networks.html">Networks</a></li>
+          <li><a href="PyNN.html">PyNN</a></li>
+          <li><a href="NeuroMLCoreDimensions.html">NeuroMLCoreDimensions</a></li>
+          <li><a href="NeuroMLCoreCompTypes.html">NeuroMLCoreCompTypes</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="row-fluid">
+    <div class="span3">
+    <div class="well sidebar-nav">
+      <b>Component Types</b><br/>
+<a href="Networks.html#network" title="Network containing populations, projections and lists of explicitConnections (either directly between components of the populations or via synapses) ">network</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Networks.html#extracellularProperties" title="A ComponentType holding information about the environment outside specific cells, e.g. the ambient temperature ">extracellularProperties</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>regions <a href="Networks.html#region" title="Initial attempt to specify 3D region for placing cells. Work in progress... ">region</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Networks.html#rectangularExtent" title="For defining a 3D rectangular box ">rectangularExtent</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>populations <a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Networks.html#population" title="A population of components, with just one parameter for the size ">population</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Networks.html#populationList" title="An explicit list of the cells in the population. Not yet stable... ">populationList</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span><a href="Networks.html#networkElementInstance" title="Initial attempt to specify instances in populations. Work in progress... ">networkElementInstance</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Networks.html#networkElementInstance1D" title="Initial attempt to specify instances in 1D populations. Work in progress... ">networkElementInstance1D</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>projections <a href="Networks.html#projection" title="Projection from one population to another. Currently it's better to define an explicit list of connections, using explicitConnection. Work in progress... ">projection</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>synapticConnections <a href="Networks.html#synapticConnection" title="Explicit event connection between named components, which gets processed via a new instance of a synapse component which is created on the target component ">synapticConnection</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Networks.html#synapticConnectionWD" title="Explicit event connection between named components, which gets processed via a new instance of a synapse component which is created on the target component, includes setting of weight and delay for the synaptic connection ">synapticConnectionWD</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>connections <a href="Networks.html#connection" title="Explicit event connection directly between named components ">connection</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>synapticConnections <a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>explicitInputs <a href="Networks.html#explicitInput" title="An explicit input (anything which extends basePointCurrent) to a target cell in a population ">explicitInput</a><br/>
+  
+    </div><!--/.well -->
+    </div><!--/span-->
+    <div class="span7">
+<a name="network">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>network</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Network containing <a href="Networks.html#population" title="A population of components, with just one parameter for the size ">population</a>s, <a href="Networks.html#projection" title="Projection from one population to another. Currently it's better to define an explicit list of connections, using explicitConnection. Work in progress... ">projection</a>s and lists of <a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a>s (either directly between components of the populations or via synapses) </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>extracellularProperties</b></td>
+    <td width="100"><a href="Networks.html#extracellularProperties" title="A ComponentType holding information about the environment outside specific cells, e.g. the ambient temperature ">extracellularProperties</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='5'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>regions</b></td>
+    <td width="100"><a href="Networks.html#region" title="Initial attempt to specify 3D region for placing cells. Work in progress... ">region</a></td>
+  </tr>
+    <td><b>populations</b></td>
+    <td width="100"><a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a></td>
+  </tr>
+    <td><b>projections</b></td>
+    <td width="100"><a href="Networks.html#projection" title="Projection from one population to another. Currently it's better to define an explicit list of connections, using explicitConnection. Work in progress... ">projection</a></td>
+  </tr>
+    <td><b>synapticConnections</b></td>
+    <td width="100"><a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a></td>
+  </tr>
+    <td><b>explicitInputs</b></td>
+    <td width="100"><a href="Networks.html#explicitInput" title="An explicit input (anything which extends basePointCurrent) to a target cell in a population ">explicitInput</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>temperature</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Temperature will be taken from extracellularProperties child</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>temperature</b> = extracellularProperties/temperature&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>temperature</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF extracellularProperties/temperature IS ABSENT: <b>temperature</b> = 273.15<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="extracellularProperties">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>extracellularProperties</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A ComponentType holding information about the environment outside specific cells, e.g. the ambient temperature </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>temperature</b> = temperature&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>temperature</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="basePopulation">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>basePopulation</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A population of cells (anything which extends <a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a>) </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>component</b></td>
+    <td width="100"><a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>temperature</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Normally comes from the extracellularProperties in the network</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+</table>
+
+<a name="population">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>population</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A population of components, with just one parameter for the <b>size</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>size</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Number of instances of this Component to create when the population is instantiated</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;INSTANTIATE <b>size</b> COMPONENTS OF TYPE <b>component</b><br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="populationList">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>populationList</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>An explicit list of the cells in the population. Not yet stable... </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>component</b></td>
+    <td width="100"><a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>networkElementInstance</b></td>
+    <td width="100"><a href="Networks.html#networkElementInstance" title="Initial attempt to specify instances in populations. Work in progress... ">networkElementInstance</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Networks.html#basePopulation" title="A population of cells (anything which extends baseCell) "><span  style="color:#85ACE1">basePopulation</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="region">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>region</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Initial attempt to specify 3D region for placing cells. Work in progress... </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>rectangularExtent</b></td>
+    <td width="100"><a href="Networks.html#rectangularExtent" title="For defining a 3D rectangular box ">rectangularExtent</a></td>
+  </tr>
+</table>
+
+<a name="rectangularExtent">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>rectangularExtent</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>For defining a 3D rectangular box </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='6'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>xStart</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>yStart</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>zStart</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>xLength</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>yLength</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>zLength</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+</table>
+
+<a name="networkElementInstance">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>networkElementInstance</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Initial attempt to specify instances in populations. Work in progress... </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>index</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+</table>
+
+<a name="networkElementInstance1D">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>networkElementInstance1D</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#networkElementInstance" title="Initial attempt to specify instances in populations. Work in progress... ">networkElementInstance</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Initial attempt to specify instances in 1D populations. Work in progress... </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>x</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>index</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Networks.html#networkElementInstance" title="Initial attempt to specify instances in populations. Work in progress... ">networkElementInstance</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+</table>
+
+<a name="projection">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>projection</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Projection from one population to another. Currently it's better to define an explicit list of connections, using <a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a>. Work in progress... </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>from</b></td>
+  </tr>
+    <td colspan='2'><b>to</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>synapticConnections</b></td>
+    <td width="100"><a href="Networks.html#synapticConnection" title="Explicit event connection between named components, which gets processed via a new instance of a synapse component which is created on the target component ">synapticConnection</a></td>
+  </tr>
+    <td><b>connections</b></td>
+    <td width="100"><a href="Networks.html#connection" title="Explicit event connection directly between named components ">connection</a></td>
+  </tr>
+</table>
+
+<a name="explicitConnection">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>explicitConnection</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Explicit event connection between components </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>targetPort</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>from</b></td>
+  </tr>
+    <td colspan='2'><b>to</b></td>
+  </tr>
+</table>
+
+<a name="connection">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>connection</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Explicit event connection directly between named components </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>from</b></td>
+  </tr>
+    <td colspan='2'><b>to</b></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>from</b> AS <b>a</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>to</b> AS <b>b</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;EVENT CONNECTION from <b>a</b> TO <b>b</b>, TARGET PORT: <b>targetPort</b><br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="synapticConnection">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>synapticConnection</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#explicitConnection" title="Explicit event connection between components ">explicitConnection</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Explicit event connection between named components, which gets processed via a new instance of a <b>synapse</b> component which is created on the target component </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>from</b></td>
+  </tr>
+    <td colspan='2'><b>to</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>synapse</b></td>
+    <td width="100"><a href="Synapses.html#baseSynapse" title="Base type for all synapses, i.e. ComponentTypes which produce a current (dimension current) and change behavior in response to an incoming event. cno_0000009 "><span  style="color:#85ACE1">baseSynapse</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>from</b> AS <b>a</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>to</b> AS <b>b</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;EVENT CONNECTION from <b>a</b> TO <b>b</b>, RECEIVER: <b>synapse</b><br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="synapticConnectionWD">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>synapticConnectionWD</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Networks.html#synapticConnection" title="Explicit event connection between named components, which gets processed via a new instance of a synapse component which is created on the target component ">synapticConnection</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Explicit event connection between named components, which gets processed via a new instance of a <b>synapse</b> component which is created on the target component, includes setting of <b>weight</b> and <b>delay</b> for the synaptic connection </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>weight</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>delay</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>from</b></td>
+  </tr>
+    <td colspan='2'><b>to</b></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>from</b> AS <b>a</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>to</b> AS <b>b</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;EVENT CONNECTION from <b>a</b> TO <b>b</b>, RECEIVER: <b>synapse</b>, DELAY: <b>delay</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASSIGN <b>weight</b> = weight<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="explicitInput">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>explicitInput</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>An explicit input (anything which extends <a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a>) to a target cell in a population </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>destination</b></td>
+  </tr>
+    <td colspan='2'><b>sourcePort</b></td>
+  </tr>
+    <td colspan='2'><b>targetPort</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Paths</span>
+  </td>
+    <td colspan='2'><b>target</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>input</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>target</b> AS <b>a</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;WITH <b>target</b> AS <b>b</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;EVENT CONNECTION from <b>a</b> TO <b>b</b>, RECEIVER: <b>input</b><br/>
+<br/>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+</div>
+</body>

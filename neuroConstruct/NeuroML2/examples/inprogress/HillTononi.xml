@@ -1,0 +1,89 @@
+<Lems>
+
+<!-- To say which component to run -->
+<DefaultRun component="sim1"/>
+
+<Include file="NeuroMLCoreDimensions.xml"/>
+<Include file="ChannelML.xml"/>
+<Include file="MorphML.xml"/>
+<Include file="NetworkML.xml"/>
+<Include file="Inputs.xml"/>
+<Include file="Simulation.xml"/>
+
+
+<!-- Roughly equivalent to <channel_type> in v1.x specification... -->
+<!-- ionChannelHH Type is defined in ChannelML.xml -->
+
+<ionChannelHH id="na" conductance="20pS">
+
+   <gateHH id="m" power="3">
+        <forwardRate compClass="HHExpLinearRate" rate="1per_ms" midpoint="-40mV" scale="10mV"/>
+        <reverseRate compClass="HHExpRate" rate="4per_ms" midpoint="-65mV" scale="-18mV"/>
+   </gateHH>
+
+   <gateHH id="h" power="1">
+       <forwardRate compClass="HHExpRate" rate="0.07per_ms" midpoint="-65mV" scale="-20mV"/>
+       <reverseRate compClass="HHSigmoidRate" rate="1per_ms" midpoint="-35mV" scale="10mV"/>
+   </gateHH>
+
+</ionChannelHH>
+
+
+<!-- Roughly equivalent to <channel_type> in v1.x specification... -->
+<!-- ionChannel Type is defined in ChannelML.xml -->
+
+<ionChannelHH id="k" conductance="20pS">
+    <gateHH id="n" power="4">
+        <forwardRate compClass="HHExpLinearRate" rate="0.1per_ms" midpoint="-55mV" scale="10mV"/>
+        <reverseRate compClass="HHExpRate" rate="0.125per_ms" midpoint="-65mV" scale="-80mV"/>
+    </gateHH>
+</ionChannelHH>
+
+
+
+
+<ionChannelHH id="h" conductance="20pS">
+    <gateTauInfComplex id="m"  power="1" C="1ms"  threshold="-75mV" vscale="5.5mV" a="-14.59" vs1="16mV" b="-1.87" vs2="17mV"/>
+</ionChannelHH>
+
+<ionChannelHH id="h2" conductance="20pS">
+    <gateTauInf id="m"  power="1">
+        <Tau compClass="hillTau"  C="1ms" a="-14.59" vs1="16mV" b="-1.87" vs2="17mV"/>
+
+        <Inf compClass="hillInf" threshold="-75mV" vscale="5.5mV"/>
+    </gateTauInf>
+</ionChannelHH>
+
+
+<!-- Roughly equivalent to <cell> in v1.x specification... -->
+<!-- HHCellIClamp Type is defined in ChannelML.xml -->
+
+<cell id="hhcell" capacitance="1pF"  v0="-65mV" thresh="20mV">
+
+    <channelPopulation id="naChans" channel="na" number="6000" erev="50mV"/>
+    <channelPopulation id="kChans" channel="k" number="1800" erev="-77mV"/>
+    <channelPopulation id="hChans" channel="h2" number="80" erev="-20mV"/>
+    
+    <pulseGenerator id="pulseGen1" delay="100ms" duration="100ms" amplitude="0.005 nA" />
+
+</cell>
+
+
+
+<network id="net1">
+    <population id="hhpop" component="hhcell" size="1"/>
+</network>
+
+
+<Simulation id="sim1" length="500ms" step="0.01ms" target="net1">
+    <Display title="Ex1: Simple Hodgkin Huxley example" timeScale="1ms">
+        <Line id="l1" quantity="hhpop[0]/v" scale="1mV"  color="#ff4040"/>
+        <Line id="l2" quantity="hhpop[0]/naChans/na/m/q" scale="0.02"  color="#ff00ff"/>
+        <Line id="l3" quantity="hhpop[0]/naChans/na/h/q" scale="0.02"  color="#ffffff"/>
+        <Line id="l4" quantity="hhpop[0]/kChans/k/n/q" scale="0.02"  color="#ffff00"/>
+        <Line id="l5" quantity="hhpop[0]/hChans/h2/m/q" scale="0.02"  color="#0000ff"/>
+    </Display>
+</Simulation>
+
+
+</Lems>

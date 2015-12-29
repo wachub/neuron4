@@ -1,0 +1,17 @@
+Examples of NeuroML v2alpha files and some LEMS files for executing them with the LEMS Interpreter
+
+Files starting with NML2_ are "pure" NeuroML 2 files and are intended for use with any compatible 
+NeuroML 2 compliant application. They are all compliant to the NeuroML v2alpha schema at ../Schemas/NeuroML2/NeuroML_v2alpha.xsd
+
+Files starting with LEMS_NML2 contain LEMS code (for locating the NeuroML 2 core component definitions and for 
+specifying simple simulations), and some NeuroML 2 elements or import NeuroML 2 files. These can all be executed 
+in the LEMS Interpreter/nml2 utility. Go to the parent folder and try:
+
+    nml2.bat examples\LEMS_NML2_Ex0_IaF.xml         (Windows)
+    ./nml2 examples/LEMS_NML2_Ex0_IaF.xml           (Linux/Mac)
+
+or if you have Ant installed try:
+
+    ant nml2_0
+
+etc.

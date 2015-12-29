@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    CoMoDL (the Common Model Description Language) is an attempt to specify a format for
+    the intersection between the elements used in the NineML Abstraction Layer and those used
+    by LEMS (Low Entropy Model Specification) for defining model component behaviour.
+
+    EVENTUALLY, it is hoped that a common component definition format will be used by NineML &
+    LEMS (and hence NeuroML v2) so that there will be low level interoperability between the formats.
+
+    This file represents what is currently used by LEMS. This should be merged with what is used by NineML
+    
+-->
+
+<xs:schema targetNamespace="CoMoDL"
+    xmlns="CoMoDL"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+
+    <!-- Import a file of elements agreed between NineML & LEMS... -->
+    <xs:include schemaLocation="CoMoDL_Consensus.xsd"/>
+
+    <xs:complexType name="Include">
+        <xs:attribute name="file" type="xs:string" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="Dimension">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="m" type="xs:integer" use="optional" default="0"/>
+        <xs:attribute name="l" type="xs:integer" use="optional" default="0"/>
+        <xs:attribute name="t" type="xs:integer" use="optional" default="0"/>
+        <xs:attribute name="i" type="xs:integer" use="optional" default="0"/>
+        <xs:attribute name="k" type="xs:integer" use="optional" default="0"/>
+        <xs:attribute name="c" type="xs:integer" use="optional" default="0"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="Unit">
+        <xs:attribute name="symbol" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+        <xs:attribute name="powTen" type="xs:integer" use="optional" default="0">
+                <xs:annotation>
+                        <xs:documentation>Some have asked whether fractional dimensions should be allowed. Disallowing it until needed...</xs:documentation>
+                </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="scale" type="xs:float" use="optional" default="1"/>
+        <xs:attribute name="offset" type="xs:float" use="optional" default="0"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="ComponentClassDefinitions">
+
+        <xs:sequence>
+            <xs:element name="Dimension" type="Dimension" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Unit" type="Unit" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Include" type="Include" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="ComponentClass" type="ComponentClass" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="ComponentClass">
+    
+        <xs:sequence>
+            <xs:element name="Property" type="NamedDimensionalType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Parameter" type="NamedDimensionalType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="DerivedParameter" type="DerivedParameter" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Constant" type="Constant" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Child" type="Child" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Children" type="Children" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Fixed" type="Fixed" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Link" type="Link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="ComponentRef" type="ComponentRef" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Attachments" type="Attachments" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xs:element name="EventPort" type="EventPort" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xs:element name="Exposure" type="NamedDimensionalType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Requirement" type="NamedDimensionalType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xs:element name="Path" type="Path" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Text" type="Text" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xs:element name="Dynamics" type="Dynamics" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="extends" type="xs:string" use="optional"/>
+        <xs:attribute name="description" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+
+
+
+    <xs:complexType name="DerivedParameter">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+
+    <xs:simpleType name="CoMoDLQuantity">
+        <xs:annotation>
+            <xs:documentation>A value for a physical quantity in CoMoDL, e.g. 20, -60.0mV, .05 per_ms or 5nA</xs:documentation>
+        </xs:annotation>
+
+        <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]*(\.[0-9]+)?)([eE]-?[0-9]+)?[\s]*([_a-zA-Z0-9])*"/>
+        </xs:restriction>
+
+    </xs:simpleType>
+
+    <xs:complexType name="Constant">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="CoMoDLQuantity" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="ComponentRef">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="compClass" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Child">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="compClass" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Attachments">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="compClass" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="EventPort">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="direction" type="xs:string" use="required"/> <!-- Should be enumeration... -->
+
+    </xs:complexType>
+
+    <xs:complexType name="Fixed">
+
+        <xs:attribute name="parameter" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="CoMoDLQuantity" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Link">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="compClass" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Children">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="compClass" type="xs:string" use="optional"/>
+        <xs:attribute name="min" type="xs:integer" use="optional"/>
+        <xs:attribute name="max" type="xs:integer" use="optional"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Path">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="Text">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="Dynamics">
+
+        <xs:sequence>
+            <xs:element name="Build" type="Build" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="StateVariable" type="StateVariable" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="DerivedVariable" type="DerivedVariable" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="TimeDerivative" type="TimeDerivative" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="OnStart" type="OnStart" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="OnEvent" type="OnEvent" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="OnCondition" type="OnCondition" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Regime" type="Regime" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="Build">
+
+        <xs:sequence>
+            <xs:element name="ChildInstance" type="ChildInstance" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="ChildInstance">
+
+        <xs:attribute name="component" type="xs:string" use="required"/>
+
+    </xs:complexType>
+    
+
+    <xs:complexType name="StateVariable">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+        <xs:attribute name="exposure" type="xs:string" use="optional"/>
+
+    </xs:complexType>
+    
+
+    <xs:complexType name="DerivedVariable">
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimension" type="xs:string" use="required"/>
+        <xs:attribute name="exposure" type="xs:string" use="optional"/>
+
+        <xs:attribute name="select" type="xs:string" use="optional"/>  <!-- only one of these... -->
+        <xs:attribute name="value" type="xs:string" use="optional"/>   <!-- only one of these... -->
+
+        <xs:attribute name="valueCondition" type="xs:string" use="optional"/>   <!-- both of these, only if value present... -->
+        <xs:attribute name="valueIfFalse" type="xs:string" use="optional"/>     <!-- both of these, only if value present... -->
+
+        <xs:attribute name="reduce" type="xs:string" use="optional"/>     <!-- only if select present... -->
+        <xs:attribute name="onAbsent" type="xs:string" use="optional"/>     <!-- only if select present... -->
+
+    </xs:complexType>
+
+    <xs:complexType name="TimeDerivative">
+
+        <xs:attribute name="variable" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="OnStart">
+
+        <xs:sequence>
+            <xs:element name="StateAssignment" type="StateAssignment" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="OnEntry">
+
+        <xs:sequence>
+            <xs:element name="StateAssignment" type="StateAssignment" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="OnEvent">
+
+        <xs:sequence>
+            <xs:element name="StateAssignment" type="StateAssignment" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="EventOut" type="EventOut" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="port" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="OnCondition">
+
+        <xs:sequence>
+            <xs:element name="StateAssignment" type="StateAssignment" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="EventOut" type="EventOut" minOccurs="0" maxOccurs="unbounded"/>  
+            <xs:element name="Transition" type="Transition" minOccurs="0" maxOccurs="1"/>   <!-- only on OnCondition inside Regime... -->
+        </xs:sequence>
+
+        <xs:attribute name="test" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="EventOut">
+
+        <xs:attribute name="port" type="xs:string" use="required"/>
+
+    </xs:complexType>
+    
+
+    <xs:complexType name="StateAssignment">
+
+        <xs:attribute name="variable" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+
+
+    <xs:complexType name="Regime">
+
+        <xs:sequence>
+            <xs:element name="TimeDerivative" type="TimeDerivative" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="OnEntry" type="OnStart" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="OnCondition" type="OnCondition" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="initial" type="TrueOrFalse" use="optional"/>
+
+    </xs:complexType>
+
+
+    <xs:simpleType name="TrueOrFalse">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="Transition">
+
+        <xs:attribute name="regime" type="xs:string" use="required"/>
+
+    </xs:complexType>
+
+</xs:schema>
+
+
+

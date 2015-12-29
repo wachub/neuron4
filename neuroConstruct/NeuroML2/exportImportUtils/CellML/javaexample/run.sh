@@ -1,0 +1,1 @@
+java -cp ~/Soft/cellml-sdk-1.11-Linux-x86_64/lib/cellml.jar:src -Djava.library.path=~/Soft/cellml-sdk-1.11-Linux-x86_64/lib:~/Soft/cellml-sdk-1.11-Linux-x86_64/include example.CreateModelTest

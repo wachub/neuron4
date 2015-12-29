@@ -1,0 +1,159 @@
+<!--
+        This HTML file was automatically generated from the documentation files in /docs/XML/xmlForHtml/docs
+    --><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Network Connections</title>
+<style type="text/css">
+                     h1 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     h3 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     p {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     li {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ol {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ul {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                 </style>
+</head>
+<body> 
+   
+    
+<h3 style="font-size: 16;color: black">Network Connections</h3> 
+   
+   
+  
+  
+            
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Introduction</h3>
+
+
+<p style="">Network Connections in neuroConstruct are made between cells in 2 <a href="Glossary_gen.html#Cell Group">Cell Groups</a>.
+Before a Network Connection can be made a <a href="Glossary_gen.html#Synaptic Mechanism">Synaptic Mechanism</a> (e.g. a Double Exponential Synapse) needs to be 
+associated with subsets of dendrites/axons on the Cells in these Groups.</p>
+
+
+<p style="">To add a new Synaptic Mechanism for the project, go to tab <b>Cell Mechanism -&gt; Add ChannelML from Template</b> and 
+select the Double Exponential Synapse. Enter the name of the Mechanism and then view and possibly edit the parameters describing it. More info on 
+Cell Mechanisms available <a href="cellmechanism.html">here</a>
+</p>
+
+
+<p style="">Go to that tab <b>Visualisation</b>, select the <a href="Glossary_gen.html#Cell Type">Cell Type</a> which is 
+associated with the Cell Group in the drop down box and press <b>View</b>
+</p>
+
+                
+        
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Specifying Groups</h3>
+
+
+
+<p style="">Select <b>Groups</b> in the lower right hand drop down box to view the <a href="Glossary_gen.html#Section Group">Section Groups</a>. 
+There are four Section Groups always present:</p>
+
+
+
+<ul>        
+
+<li>
+
+<b>all</b>: Every Section is included in this Group</li>
+
+<li>
+
+<b>soma_group</b>: This Group should contain only one Section, representing the soma</li>
+
+<li>
+
+<b>dendrite_group</b>: The Group of dendritic Sections</li>
+
+<li>
+
+<b>axon_group</b>: The Group of axonal Sections</li>
+
+</ul>
+
+
+
+<p style="">Network Connections will always initiate on a Section in either the <b>soma_group</b> or the
+<b>axon_group</b>. Similarly, the connections will terminate on a Section in either the <b>soma_group</b> 
+or the <b>dendrite_group</b>. </p>
+
+                
+        
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Specifying Synaptic Connection Locations</h3>
+
+
+<p style="">Not every <a href="Glossary_gen.html#Section">Section</a> of the Cell would be a suitable location of a particular synapse, 
+so other subgroups can be defined which specify where the connections should be made. By pressing <b>Edit Groups</b>,
+new Section Groups can be made (e.g. basal/apical dendrites, parallel fibers), grouping Sections into biophysically 
+interesting regions of the cell. </p>
+
+
+<p style="">Select <b>Synaptic Connection Location</b> in the drop down box. Click <b>Edit Synaptic Locations</b>.
+The added Synaptic Mechanism should be in the drop down list. Select this and then select the Section Groups where the 
+synapse can be found.</p>
+
+
+<p style="">It is important to point out again that the PRE synaptic location will be the intersection of the Sections in the (<b>soma_group</b> or the
+<b>axon_group</b>) and the Group(s) selected here. Similarly for the POST synaptic location. Therefore if the 
+Group <b>all</b> is selected as a Synaptic Connection Location, synapses can be made on the axons (PRE), 
+dendrites (POST) and soma (PRE and POST). However if only the Group <b>dendrite_group</b> is selected as a 
+Synaptic Connection Location (or another Group only containing dendrites), then this particular Cell Type will only have 
+POST synaptic connections. Axons on another Cell Type will need to be specified as Synaptic Connection Locations for 
+this Synaptic Mechanism to make a Network Connection.
+</p>
+
+                
+        
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Creating Network Connections</h3>
+      
+      
+<p style="">Now that it is specified on which parts of the Cells synapses can be made, Network Connections can be created.</p>
+      
+<p style="">Go to tab <b>Network Settings</b> and click on <b>Add Network Connection...</b> under Network Connections. </p>
+      
+      
+<p style="">Select the source Cell Group and the Target Cell Group, ensuring PRE Synaptic Connection Locations are 
+      allowed on Cell Types of the former and POST Synaptic Connection Locations on Cell Types of the latter.
+       </p>
+      
+      
+<p style="">Select the Synaptic Properties, including which Synaptic Mechanism is involved in the Network Connection, the voltage threshold
+      which will cause the synapse to fire, the delay after passing the threshold, and the weight of the synapse. These past two
+      values can be given fixed or variable values, in which case a new value will be generated for each instance of the synapse.
+       </p>
+      
+      
+<p style="">Other options include the method for searching for the connection point, the max and min lengths of the allowed 
+      connections, and a number of other Connection Conditions. These are explained in more detail in the Tool Tips which 
+      pop up when the cursor hovers over the relevant panel/label. Ensure viewing Tool Tips is enabled in 
+      <b>Settings -&gt; General Properties &amp; Project Defaults</b>
+      
+</p>
+      
+      
+      
+<p style="">Once a Network Connection is made, generate the network, and view the latest positions in tab <b>Visualisation</b>.
+      You will see the generated Network Connections as lines going from green (PRE synaptic location) to red 
+      (POST synaptic location) between the Sections which are connected by the synapse. If the option is selected in 
+      <b>3D Settings</b> a sphere will be placed at each of the Synaptic Endpoints. 
+      </p>
+      
+      
+      
+              
+
+
+<p style="">&nbsp;</p>
+
+<p style="">&nbsp;</p>
+  
+
+</body>
+</html>

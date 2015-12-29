@@ -1,0 +1,76 @@
+<Lems>
+
+
+<Include file="NeuroMLCoreDimensions.xml"/>
+
+
+
+<Type name="sbmlLite">
+
+    <Text name="version"/>
+    <Text name="level"/>
+    
+    <Children name="listOfCompartments" compClass="listOfCompartments"/>
+    <Children name="listOfSpecies" compClass="listOfSpecies"/>
+    <Children name="listOfParameters" compClass="listOfParameters"/>
+
+    <Constant name="rate" dimension="per_time" value="50per_s"/>
+    <Constant name="trig" dimension="time" value="50ms"/>
+    <Dynamics>
+
+        <StateVariable name="v" dimension="none"/>
+
+      
+        <OnCondition test="t .gt. trig">
+            <StateAssignment variable="v" value="10"/>
+        </OnCondition>
+
+        <TimeDerivative variable="v" value="rate"/>
+        
+    </Dynamics>
+
+</Type>
+
+<Type name="listOfCompartments">
+    <Children name="compartment" compClass="compartment"/>
+</Type>
+
+<Type name="compartment">
+        <Parameter name="size" Dimension="none"/>
+</Type>
+
+<Type name="listOfSpecies">
+    <Children name="species" compClass="species"/>
+</Type>
+
+<Type name="species"> <!--name="s1" compartment="defComp" initialAmount="10" charge="0"/>-->
+
+    <Link name="compartment" compClass="compartment"/>
+
+    <Parameter name="initialAmount" Dimension="none"/>
+    <Parameter name="charge" Dimension="none"/>
+</Type>
+
+
+<Type name="listOfParameters">
+    <Children name="parameters" compClass="parameter"/>
+</Type>
+
+<Type name="parameter">
+
+    <Parameter name="value" Dimension="none"/>
+    <Parameter name="constant" Dimension="none"/>
+</Type>
+
+<Type name="listOfRuless">
+    <Children name="assignmentRules" compClass="assignmentRule"/>
+</Type>
+
+<Type name="assignmentRule">
+
+    <Parameter name="value" Dimension="none"/>
+    <Parameter name="constant" Dimension="none"/>
+</Type>
+
+
+</Lems>

@@ -1,0 +1,93 @@
+<Lems>
+
+        <!-- Example with Bursting Izhikevich cell -->
+
+        <!-- This is a file which can be read and executed by the LEMS Interpreter.
+             It imports the LEMS definitions of the core NeuroML 2 Components, creates 
+             a model in "pure" NeuroML 2 and contains some LEMS elements for running 
+             a simulation -->
+
+
+<!-- Specify which component to run -->
+<DefaultRun component="sim1"/>
+
+<!-- Include core NeuroML2 ComponentClass definitions -->
+<Include file="NeuroML2CoreTypes/Cells.xml"/>
+<Include file="NeuroML2CoreTypes/Networks.xml"/>
+<Include file="NeuroML2CoreTypes/Inputs.xml"/>
+<Include file="NeuroML2CoreTypes/Simulation.xml"/>
+<Include file="NeuroML2CoreTypes/PyNN.xml"/>
+
+
+        <!-- Main NeuroML2 content. Based on http://www.izhikevich.org/publications/figure1.m -->
+
+<EIF_cond_exp_isfa_ista id="EIF" a="0.0" b="0.0805" cm="0.281"
+    delta_T="2.0" e_rev_E="0.0" e_rev_I="-80.0" i_offset="0" tau_m="9.3667" tau_refrac="2.0" tau_syn_E="5.0"
+    tau_syn_I="5.0" tau_w="144.0" v_init="-65" v_reset="-68.0" v_rest="-70.6" v_spike="-40.0" v_thresh="-52.0"/>
+
+<adExIaFCell id="adExBurst4"     C="281pF" gL="30nS" EL="-70.6mV" reset="-47.2mV" VT = "-50.4mV"
+             thresh = "-40.4mV" delT="2mV" tauw="40ms"  a ="4nS"   b = "0.08nA"
+             refract="0ms" Iamp="0.0nA"  Idel="0ms"   Idur="2000ms"/>
+
+<pulseGenerator id="pulseGen1" delay="400ms" duration="400ms" amplitude="0.8 nA" />
+
+
+
+<ComponentClass xmlns="CoMoDL" name="sineGenerator" extends="pointCurrent"
+    description="Generates ...">
+
+    <Parameter name="phase" dimension="none"/>
+    <Parameter name="delay" dimension="time"/>
+    <Parameter name="duration" dimension="time"/>
+    <Parameter name="amplitude" dimension="current"/>
+    <Parameter name="period" dimension="time"/>
+
+    <EventPort name="in" direction="in"/>
+
+    <Dynamics>
+
+        <StateVariable name="i" exposure="i" dimension="current"/>
+
+        <OnEvent port="in"><!--TODO: remove-->
+        </OnEvent>
+
+        <OnCondition test="t .lt. delay">
+            <StateAssignment variable="i" value="0"/>
+        </OnCondition>
+
+        <OnCondition test="t .geq. delay .and. t .lt. duration+delay">
+            <StateAssignment variable="i" value="amplitude * sin(phase + (2 * 3.14159265 * (t-delay)/period) )"/>
+        </OnCondition>
+
+        <OnCondition test="t .geq. duration+delay">
+            <StateAssignment variable="i" value="0"/>
+        </OnCondition>
+
+    </Dynamics>
+</ComponentClass>
+
+<sineGenerator id="sg1" phase="0" delay="0ms" duration="2000ms" amplitude="0.6nA" period="111ms"/>
+<sineGenerator id="sg2" phase="3.14159265" delay="0ms" duration="2000ms" amplitude="0.6nA" period="100ms"/>
+
+<network id="net1">
+    <population id="cellPop" component="adExBurst4" size="1"/>
+    <explicitInput target="cellPop[0]" input="sg1"/>
+    <explicitInput target="cellPop[0]" input="sg2"/>
+</network>
+
+        <!-- End of NeuroML2 content -->
+        
+
+<Simulation id="sim1" length="1300ms" step="0.02ms" target="net1">
+
+    <Display id="d1" title="Current" timeScale="1ms">
+        <Line id ="i" quantity="cellPop[0]/sg1/i" scale="1nA"  color="#aaaaFF" save="examples/testResults/i.dat"/>
+        <Line id ="i2" quantity="cellPop[0]/sg2/i" scale="1nA"  color="#aaffFF" save="examples/testResults/i2.dat"/>
+    </Display>
+    <Display id="d2" title="Cell in LEMS" timeScale="1ms">
+        <Line id ="iz1" quantity="cellPop[0]/v" scale="1mV"  color="#ee40FF" save="examples/testResults/iz_V_t.dat"/>
+    </Display>
+    
+</Simulation>
+
+</Lems>

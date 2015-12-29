@@ -1,0 +1,2739 @@
+<html>
+  <head>
+    <title>Cells</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css"> td { font-size: 14; } </style>
+    <!--<style type="text/css"> body { padding-top: 90px; padding-bottom: 30px;  padding-left: 50px;  padding-right:50px; } </style>-->
+  </head>
+<body>
+
+<div class="navbar ">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">NeuroML 2 Component Types</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="Cells.html">Cells</a></li>
+          <li><a href="Synapses.html">Synapses</a></li>
+          <li><a href="Channels.html">Channels</a></li>
+          <li><a href="Inputs.html">Inputs</a></li>
+          <li><a href="Networks.html">Networks</a></li>
+          <li><a href="PyNN.html">PyNN</a></li>
+          <li><a href="NeuroMLCoreDimensions.html">NeuroMLCoreDimensions</a></li>
+          <li><a href="NeuroMLCoreCompTypes.html">NeuroMLCoreCompTypes</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="row-fluid">
+    <div class="span3">
+    <div class="well sidebar-nav">
+      <b>Component Types</b><br/>
+<a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#cell" title="Cell with segments specified in a morphology element along with details on its biophysicalProperties. NOTE: this can only be correctly simulated using LEMS when there is a single segment in the cell, and v of this cell represents the membrane potential in that isopotential segment!!! ">cell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="NeuroMLCoreCompTypes.html#notes" title="Human readable notes on the Component ">notes</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#parent" title="Specifies the segment which is this segment's parent ">parent</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#distal" title="Point furthest from the soma in a segment ">distal</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#proximal" title="Point closest to the soma in a segment. Note, if the proximal point is equal to the distal point of the parent segment, proximal can be omitted. ">proximal</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>segmentGroups <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>members <a href="Cells.html#member" title="A single identified segment which is part of the segmentGroup ">member</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>paths <a href="Cells.html#path" title="Include all the segments between those specified by from and to, inclusive ">path</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#from" title="Specifies which segment distal from which to calculate the segmentGroup ">from</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#to" title="Specifies which segment up to which to calculate the segmentGroup ">to</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>subTrees <a href="Cells.html#subTree" title="Include all the segments distal to that specified by from in the segmentGroup ">subTree</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>includes <a href="Cells.html#include" title="Include all members of another segmentGroup in this ">include</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#biophysicalProperties" title="The biophysical properties of the cell, including the membraneProperties and the intracellularProperties ">biophysicalProperties</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#membraneProperties" title="Properties specific to the membrane, such as the populations of channels, channelDensities, specificCapacitance, etc. ">membraneProperties</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#specificCapacitance" title="Capacitance per unit area ">specificCapacitance</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#initMembPotential" title="Explicitly set initial membrane potential for the cell ">initMembPotential</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#spikeThresh" title="Membrane potential at which to emit a spiking event. Note, usually the spiking event will not be emitted again until the membrane potential has fallen below this value and rises again to cross it in a positive direction ">spikeThresh</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>populations <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelPopulation" title="Population of number ohmic ion channels. These each produce a conductance channelg across a reversal potential erev, giving a total current i. ">channelPopulation</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelPopulationNernst" title="Population of channels with a time varying reversal potential erev determined by Nernst equation. Hard coded for Ca only! Work in progress!! ">channelPopulationNernst</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelPopulationGHK" title="Population of channels producing GHK current. Hard coded for Ca only! In progress!! ">channelPopulationGHK</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>channelDensities <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelDensity" title="Specifies a time varying ohmic conductance density, gDensity, which is distributed on an area of the cell with fixed reversal potential erev producing a current density iDensity ">channelDensity</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelDensityNernst" title="Specifies a time varying conductance density, gDensity, which is distributed on an area of the cell, producing a current density iDensity and whose reversal potential is calculated from the Nernst equation. Hard coded for Ca only! Work in progress!! ">channelDensityNernst</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#channelDensityGHK" title="Specifies a time varying conductance density, gDensity, which is distributed on an area of the cell, producing a current density iDensity and whose reversal potential is calculated from the Goldman Hodgkin Katz equation. Hard coded for Ca only! NOT YET COMPLETE! Work in progress!! ">channelDensityGHK</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#intracellularProperties" title="Biophysical properties related to the intracellular space within the cell, such as the resistivity and the list of species present. caConc and caConcExt are explicitly exposed here to facilitate accessing these values from other Components, even though caConcExt is clearly not an intracellular property ">intracellularProperties</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>+</b> </span><a href="Cells.html#resistivity" title="The resistivity, or specific axial resistance, of the cytoplasm ">resistivity</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>speciesList <a href="Cells.html#species" title="Description of a chemical species identified by ion, which has internal, concentration, and external, extConcentration values for its concentration ">species</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#pointCellCondBased" title="Simple model of a conductance based cell, with no separate morphology element, just an absolute capacitance C, and a set of channel populations ">pointCellCondBased</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>populations <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#pointCellCondBasedCa" title="TEMPORARY: Point cell with conductances and Ca concentration  info. Not yet fully tested!!! ">pointCellCondBasedCa</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>populations <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>++</b> </span>concentrationModels <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#decayingPoolConcentrationModel" title="Model of buffering of concentration of an ion (currently hard coded to be calcium, due to requirement for iCa) which has a baseline level restingConc and tends to this value with time course decayConstant. The ion is assumed to occupy a shell inside the membrane of thickness shellThickness. ">decayingPoolConcentrationModel</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseIafCapCell" title="Base Type for all Integrate and Fire cells with a capacitance C, threshold thresh and reset membrane potential reset "><span  style="color:#85ACE1">baseIafCapCell</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#iafCell" title="Integrate and fire cell with capacitance C, leakConductance and leakReversal ">iafCell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#adExIaFCell" title="Model based on Brette R and Gerstner W (2005) Adaptive Exponential Integrate-and-Fire Model as an Effective Description of Neuronal Activity. J Neurophysiol 94:3637-3642 ">adExIaFCell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#iafTauCell" title="Integrate and fire cell which returns to its leak reversal potential of leakReversal with a time course tau ">iafTauCell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#iafTauRefCell" title="Integrate and fire cell which returns to its leak reversal potential of leakReversal with a time course tau. It has a refractory period of refract after spiking ">iafTauRefCell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#izhikevichCell" title="Cell based on the model of Izhikevich, see http://izhikevich.org/publications/spikes.htm ">izhikevichCell</a><br/>
+  
+&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#baseCellMembPotDL" title="Any cell which has a dimensioness membrane potential, V. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPotDL</span></a><br/>
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:darkgrey"><b>></b> </span><a href="Cells.html#fitzHughNagumoCell" title="Simple dimensionless model of spiking cell from FitzHugh and Nagumo. Based on http://www.scholarpedia.org/article/FitzHugh-Nagumo_model ">fitzHughNagumoCell</a><br/>
+  
+    </div><!--/.well -->
+    </div><!--/span-->
+    <div class="span7">
+    <table class="table table-bordered"><tr><td ><h3>Cells</h3></td></tr>
+    <tr><td><span  style="color:dimgrey"><i>Defines both abstract cell models (e.g. <a href="Cells.html#izhikevichCell" title="Cell based on the model of Izhikevich, see http://izhikevich.org/publications/spikes.htm ">izhikevichCell</a>, adaptive exponential integrate and fire cell, <a href="Cells.html#adExIaFCell" title="Model based on Brette R and Gerstner W (2005) Adaptive Exponential Integrate-and-Fire Model as an Effective Description of Neuronal Activity. J Neurophysiol 94:3637-3642 ">adExIaFCell</a>), point conductance based cell models (<a href="Cells.html#pointCellCondBased" title="Simple model of a conductance based cell, with no separate morphology element, just an absolute capacitance C, and a set of channel populations ">pointCellCondBased</a>, <a href="Cells.html#pointCellCondBasedCa" title="TEMPORARY: Point cell with conductances and Ca concentration  info. Not yet fully tested!!! ">pointCellCondBasedCa</a>) and cells models (<a href="Cells.html#cell" title="Cell with segments specified in a morphology element along with details on its biophysicalProperties. NOTE: this can only be correctly simulated using LEMS when there is a single segment in the cell, and v of this cell represents the membrane potential in that isopotential segment!!! ">cell</a>) which specify the <a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a> (containing <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a>s) and <a href="Cells.html#biophysicalProperties" title="The biophysical properties of the cell, including the membraneProperties and the intracellularProperties ">biophysicalProperties</a> separately. </i></span></td></tr>
+    <tr><td>Original LEMS definitions: <a href="https://sourceforge.net/apps/trac/neuroml/browser/NeuroML2/NeuroML2CoreTypes/Cells.xml">Cells.xml</a></td></tr>
+    </table><br/>
+<a name="baseCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseCell</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base type of any cell which can be used in a population </i></span>    </td>
+  </tr>
+</table>
+
+<a name="baseCellMembPot">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseCellMembPot</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Any cell which has a membrane potential <b>v</b> with voltage units. These will emit <b>spike</b> events. </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>v</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Membrane potential</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td><b>spike</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Spike event</i></span></td>
+    <td width="100">Direction: out</td>
+  </tr>
+</table>
+
+<a name="baseCellMembPotDL">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseCellMembPotDL</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCell" title="Base type of any cell which can be used in a population "><span  style="color:#85ACE1">baseCell</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Any cell which has a dimensioness membrane potential, <b>V.</b> These will emit <b>spike</b> events. </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>V</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Membrane potential</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td><b>spike</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Spike event</i></span></td>
+    <td width="100">Direction: out</td>
+  </tr>
+</table>
+
+<a name="baseChannelPopulation">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseChannelPopulation</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Inputs.html#baseVoltageDepPointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) and require a membrane potential v exposed on the parent Component "><span  style="color:#85ACE1">baseVoltageDepPointCurrent</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base type for any current produced by a population of channels, all of type <b>ionChannel</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>i</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#baseVoltageDepPointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) and require a membrane potential v exposed on the parent Component "><span  style="color:#85ACE1">baseVoltageDepPointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+</table>
+
+<a name="channelPopulation">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelPopulation</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Population of <b>number</b> ohmic ion channels. These each produce a conductance <b>channelg</b> across a reversal potential <b>erev,</b> giving a total current <b>i.</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>number</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>erev</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>i</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#baseVoltageDepPointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) and require a membrane potential v exposed on the parent Component "><span  style="color:#85ACE1">baseVoltageDepPointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>channelg</b> = ionChannel/g&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>geff</b> = channelg * number&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>i</b> = geff * (erev - v)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>i</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="channelPopulationNernst">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelPopulationNernst</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Population of channels with a time varying reversal potential <b>erev</b> determined by Nernst equation. Hard coded for Ca only! Work in progress!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>number</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>R</b> = 8.3144621 J_per_K_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#idealGasConstantDims">idealGasConstantDims</a></td>
+  </tr>
+    <td><b>zCa</b> = 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>F</b> = 96485.3 C_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#charge_per_mole">charge_per_mole</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>i</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>erev</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#baseVoltageDepPointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) and require a membrane potential v exposed on the parent Component "><span  style="color:#85ACE1">baseVoltageDepPointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>singleChannelConductance</b> = ionChannel/g&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totalConductance</b> = singleChannelConductance * number&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>erev</b> = (R * temperature / (zCa * F)) * ln(caConcExt / caConc)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>erev</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>i</b> = totalConductance * (erev - v)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>i</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="channelPopulationGHK">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelPopulationGHK</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Population of channels producing GHK current. Hard coded for Ca only! In progress!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>number</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>R</b> = 8.3144621 J_per_K_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#idealGasConstantDims">idealGasConstantDims</a></td>
+  </tr>
+    <td><b>zCa</b> = 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>F</b> = 96485.3 C_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#charge_per_mole">charge_per_mole</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>i</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>erevEff</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Inputs.html#baseVoltageDepPointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) and require a membrane potential v exposed on the parent Component "><span  style="color:#85ACE1">baseVoltageDepPointCurrent</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>singleChannelConductance</b> = ionChannel/g&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totalConductance</b> = singleChannelConductance * number&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>K</b> = (zCa * F) / (R * temperature)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>eKv</b> = exp(K * v)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>i</b> = -1 * totalConductance * F * K * v * ( (caConc * eKv) - caConcExt) / (eKv - 1) &nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>i</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>erevEff</b> = v&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>erevEff</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="baseChannelDensity">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseChannelDensity</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base type for current distributed on an area of a cell </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>iDensity</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#currentDensity">currentDensity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>v</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+</table>
+
+<a name="baseChannelDensityCond">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseChannelDensityCond</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>condDensity</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>iDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#currentDensity">currentDensity</a></td>
+  </tr>
+    <td><b>gDensity</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+</table>
+
+<a name="channelDensity">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelDensity</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies a time varying ohmic conductance density, <b>gDensity,</b> which is distributed on an area of the cell with fixed reversal potential <b>erev</b> producing a current density <b>iDensity</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>condDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+    <td><b>erev</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segmentGroup</b></td>
+  </tr>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>iDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#currentDensity">currentDensity</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>gDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>channelf</b> = ionChannel/fopen&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>gDensity</b> = condDensity * channelf&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>gDensity</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iDensity</b> = gDensity * (erev - v)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iDensity</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="channelDensityNernst">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelDensityNernst</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies a time varying conductance density, <b>gDensity,</b> which is distributed on an area of the cell, producing a current density <b>iDensity</b> and whose reversal potential is calculated from the Nernst equation. Hard coded for Ca only! Work in progress!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>condDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segmentGroup</b></td>
+  </tr>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>R</b> = 8.3144621 J_per_K_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#idealGasConstantDims">idealGasConstantDims</a></td>
+  </tr>
+    <td><b>zCa</b> = 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>F</b> = 96485.3 C_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#charge_per_mole">charge_per_mole</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>iDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#currentDensity">currentDensity</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>gDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensityCond" title="Base type for distributed conductances on an area of a cell producing a (not necessarily ohmic) current "><span  style="color:#85ACE1">baseChannelDensityCond</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductanceDensity">conductanceDensity</a></td>
+  </tr>
+    <td><b>erev</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>channelf</b> = ionChannel/fopen&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>gDensity</b> = condDensity * channelf&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>gDensity</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>erev</b> = (R * temperature / (zCa * F)) * ln(caConcExt / caConc)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>erev</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iDensity</b> = gDensity * (erev - v)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iDensity</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="channelDensityGHK">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>channelDensityGHK</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies a time varying conductance density, <b>gDensity,</b> which is distributed on an area of the cell, producing a current density <b>iDensity</b> and whose reversal potential is calculated from the Goldman Hodgkin Katz equation. Hard coded for Ca only! NOT YET COMPLETE! Work in progress!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>permeability</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#permeability">permeability</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segmentGroup</b></td>
+  </tr>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>ionChannel</b></td>
+    <td width="100"><a href="Channels.html#baseIonChannel" title="Base for all ion channel ComponentTypes "><span  style="color:#85ACE1">baseIonChannel</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>R</b> = 8.3144621 J_per_K_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#idealGasConstantDims">idealGasConstantDims</a></td>
+  </tr>
+    <td><b>zCa</b> = 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>F</b> = 96485.3 C_per_mol<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>TODO: Make this a global constant!</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#charge_per_mole">charge_per_mole</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>iDensity</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#currentDensity">currentDensity</a></td>
+  </tr>
+    <td><b>erev</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>temperature</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>K</b> = (zCa * F) / (R * temperature)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>expKv</b> = exp(K * v)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>erev</b> = -2&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>erev</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>channelf</b> = ionChannel/fopen&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iDensity</b> = -1 * channelf * permeability * F * K * v * ( (caConc * expKv) - caConcExt) / (expKv -1)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iDensity</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="pointCellCondBased">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>pointCellCondBased</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Simple model of a conductance based cell, with no separate morphology element, just an absolute capacitance <b>C,</b> and a set of channel populations </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+    <td><b>v0</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>thresh</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>populations</b></td>
+    <td width="100"><a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iSyn</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iMemb</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = v0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh AND spiking &lt; 0.5 THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &lt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iChannels</b> = populations[*]/i&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iSyn</b> = synapses[*]/i&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iSyn</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iMemb</b> = iChannels + iSyn&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iMemb</b>)
+<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = iMemb / C<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="pointCellCondBasedCa">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>pointCellCondBasedCa</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>TEMPORARY: Point cell with conductances and Ca concentration  info. Not yet fully tested!!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+    <td><b>v0</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>thresh</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>populations</b></td>
+    <td width="100"><a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></td>
+  </tr>
+    <td><b>concentrationModels</b></td>
+    <td width="100"><a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='5'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iSyn</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iMemb</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>iCa</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = v0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh AND spiking &lt; 0.5 THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &lt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iChannels</b> = populations[*]/i&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iCa</b> = populations[ion='ca']/i&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iCa</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>caConc</b> = concentrationModels[species='ca']/concentration&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>caConc</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iSyn</b> = synapses[*]/i&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iSyn</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iMemb</b> = iChannels + iSyn&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iMemb</b>)
+<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = iMemb / C<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="distal">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>distal</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Point furthest from the soma in a segment </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>x</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>y</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>z</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>diameter</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>radius</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>x</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>y</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>z</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>radius</b> = 0.000001 * diameter / 2&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>radius</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>x</b> = 0.000001 * x&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>x</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>y</b> = 0.000001 * y&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>y</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>z</b> = 0.000001 * z&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>z</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="proximal">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>proximal</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Point closest to the soma in a segment. Note, if the proximal point is equal to the distal point of the parent segment, proximal can be omitted. </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>x</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>y</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>z</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td style="color:darkgrey"><b>diameter</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>radius</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>x</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>y</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>z</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="NeuroMLCoreCompTypes.html#pointDiam" title="Base type for ComponentTypes which specify an ( x, y, z ) coordinate along with a diameter. Note: no dimension used in the attributes for these coordinates! These are assumed to have dimension micrometer (10^-6 m). This is due to micrometers being the default option for the majority of neuronal morphology formats, and dimensions are omitted here to facilitate reading and writing of morphologies in NeuroML. ">pointDiam</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>radius</b> = 0.000001 * diameter / 2&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>radius</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>x</b> = 0.000001 * x&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>x</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>y</b> = 0.000001 * y&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>y</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>z</b> = 0.000001 * z&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>z</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="parent">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>parent</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies the segment which is this segment's parent </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segment</b></td>
+  </tr>
+</table>
+
+<a name="segment">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>segment</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A segment defines the smallest unit within a possibly branching structure (<a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a>), such as a dendrite or axon. The shape is given by the <a href="Cells.html#proximal" title="Point closest to the soma in a segment. Note, if the proximal point is equal to the distal point of the parent segment, proximal can be omitted. ">proximal</a> and <a href="Cells.html#distal" title="Point furthest from the soma in a segment ">distal</a> points. If <a href="Cells.html#proximal" title="Point closest to the soma in a segment. Note, if the proximal point is equal to the distal point of the parent segment, proximal can be omitted. ">proximal</a> is missing, the proximal point is assumed to be the <a href="Cells.html#distal" title="Point furthest from the soma in a segment ">distal</a> point of the parent. <a href="Cells.html#parent" title="Specifies the segment which is this segment's parent ">parent</a> specifies the parent segment. The first segment (no <a href="Cells.html#parent" title="Specifies the segment which is this segment's parent ">parent</a>) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>parent</b></td>
+    <td width="100"><a href="Cells.html#parent" title="Specifies the segment which is this segment's parent ">parent</a></td>
+  </tr>
+    <td><b>distal</b></td>
+    <td width="100"><a href="Cells.html#distal" title="Point furthest from the soma in a segment ">distal</a></td>
+  </tr>
+    <td><b>proximal</b></td>
+    <td width="100"><a href="Cells.html#proximal" title="Point closest to the soma in a segment. Note, if the proximal point is equal to the distal point of the parent segment, proximal can be omitted. ">proximal</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>LEN</b> = 1m</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>surfaceArea</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+    <td><b>radDist</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+    <td><b>length</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>radDist</b> = distal/radius&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>radDist</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dx</b> = distal/x&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dy</b> = distal/y&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dz</b> = distal/z&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>px</b> = proximal/x&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>py</b> = proximal/y&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>pz</b> = proximal/z&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>length</b> = sqrt(((dx - px) * (dx - px) + (dy - py) * (dy - py) + (dz - pz) * (dz - pz))/(LEN * LEN)) * LEN&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>length</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>surfaceArea</b> = 4 * radDist * radDist * 3.14159265&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>surfaceArea</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="segmentGroup">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>segmentGroup</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A method to describe a group of <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a>s in a <a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>id</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>members</b></td>
+    <td width="100"><a href="Cells.html#member" title="A single identified segment which is part of the segmentGroup ">member</a></td>
+  </tr>
+    <td><b>paths</b></td>
+    <td width="100"><a href="Cells.html#path" title="Include all the segments between those specified by from and to, inclusive ">path</a></td>
+  </tr>
+    <td><b>subTrees</b></td>
+    <td width="100"><a href="Cells.html#subTree" title="Include all the segments distal to that specified by from in the segmentGroup ">subTree</a></td>
+  </tr>
+    <td><b>includes</b></td>
+    <td width="100"><a href="Cells.html#include" title="Include all members of another segmentGroup in this ">include</a></td>
+  </tr>
+</table>
+
+<a name="member">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>member</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>A single identified <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a> which is part of the <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segment</b></td>
+  </tr>
+</table>
+
+<a name="from">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>from</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies which <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a> distal from which to calculate the <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segment</b></td>
+  </tr>
+</table>
+
+<a name="to">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>to</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Specifies which <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a> up to which to calculate the <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>segment</b></td>
+  </tr>
+</table>
+
+<a name="include">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>include</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Include all members of another <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a> in this </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>href</b></td>
+  </tr>
+    <td colspan='2'><b>segmentGroup</b></td>
+  </tr>
+</table>
+
+<a name="path">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>path</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Include all the segments between those specified by <a href="Cells.html#from" title="Specifies which segment distal from which to calculate the segmentGroup ">from</a> and <a href="Cells.html#to" title="Specifies which segment up to which to calculate the segmentGroup ">to</a>, inclusive </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>from</b></td>
+    <td width="100"><a href="Cells.html#from" title="Specifies which segment distal from which to calculate the segmentGroup ">from</a></td>
+  </tr>
+    <td><b>to</b></td>
+    <td width="100"><a href="Cells.html#to" title="Specifies which segment up to which to calculate the segmentGroup ">to</a></td>
+  </tr>
+</table>
+
+<a name="subTree">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>subTree</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Include all the segments distal to that specified by <a href="Cells.html#from" title="Specifies which segment distal from which to calculate the segmentGroup ">from</a> in the <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>from</b></td>
+    <td width="100"><a href="Cells.html#from" title="Specifies which segment distal from which to calculate the segmentGroup ">from</a></td>
+  </tr>
+</table>
+
+<a name="morphology">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>morphology</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>The collection of <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a>s which specify the 3D structure of the cell, along with a number of <a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a>s </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>segment</b></td>
+    <td width="100"><a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>segmentGroups</b></td>
+    <td width="100"><a href="Cells.html#segmentGroup" title="A method to describe a group of segments in a morphology ">segmentGroup</a></td>
+  </tr>
+</table>
+
+<a name="specificCapacitance">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>specificCapacitance</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Capacitance per unit area </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>value</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#specificCapacitance">specificCapacitance</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>totSpecCap</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#specificCapacitance">specificCapacitance</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totSpecCap</b> = value&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totSpecCap</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="initMembPotential">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>initMembPotential</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Explicitly set initial membrane potential for the cell </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>value</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+</table>
+
+<a name="spikeThresh">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>spikeThresh</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Membrane potential at which to emit a spiking event. Note, usually the spiking event will not be emitted again until the membrane potential has fallen below this value and rises again to cross it in a positive direction </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>value</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+</table>
+
+<a name="membraneProperties">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>membraneProperties</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Properties specific to the membrane, such as the <b>populations</b> of channels, <b>channelDensities,</b> <b>specificCapacitance,</b> etc. </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>specificCapacitance</b></td>
+    <td width="100"><a href="Cells.html#specificCapacitance" title="Capacitance per unit area ">specificCapacitance</a></td>
+  </tr>
+    <td><b>initMembPotential</b></td>
+    <td width="100"><a href="Cells.html#initMembPotential" title="Explicitly set initial membrane potential for the cell ">initMembPotential</a></td>
+  </tr>
+    <td><b>spikeThresh</b></td>
+    <td width="100"><a href="Cells.html#spikeThresh" title="Membrane potential at which to emit a spiking event. Note, usually the spiking event will not be emitted again until the membrane potential has fallen below this value and rises again to cross it in a positive direction ">spikeThresh</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>populations</b></td>
+    <td width="100"><a href="Cells.html#baseChannelPopulation" title="Base type for any current produced by a population of channels, all of type ionChannel "><span  style="color:#85ACE1">baseChannelPopulation</span></a></td>
+  </tr>
+    <td><b>channelDensities</b></td>
+    <td width="100"><a href="Cells.html#baseChannelDensity" title="Base type for current distributed on an area of a cell "><span  style="color:#85ACE1">baseChannelDensity</span></a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>totChanCurrent</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>iCa</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>totSpecCap</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#specificCapacitance">specificCapacitance</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+    <td><b>surfaceArea</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totSpecCap</b> = specificCapacitance/totSpecCap&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totSpecCap</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totChanPopCurrent</b> = populations[*]/i&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totChanDensCurrentDensity</b> = channelDensities[*]/iDensity&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totChanCurrent</b> = totChanPopCurrent + (totChanDensCurrentDensity * surfaceArea)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totChanCurrent</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totChanPopCurrentCa</b> = populations[ion='ca']/i&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totChanDensCurrentDensityCa</b> = channelDensities[ion='ca']/iDensity&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iCa</b> = totChanPopCurrentCa + (totChanDensCurrentDensityCa * surfaceArea)&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iCa</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="biophysicalProperties">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>biophysicalProperties</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>The biophysical properties of the <a href="Cells.html#cell" title="Cell with segments specified in a morphology element along with details on its biophysicalProperties. NOTE: this can only be correctly simulated using LEMS when there is a single segment in the cell, and v of this cell represents the membrane potential in that isopotential segment!!! ">cell</a>, including the <a href="Cells.html#membraneProperties" title="Properties specific to the membrane, such as the populations of channels, channelDensities, specificCapacitance, etc. ">membraneProperties</a> and the <a href="Cells.html#intracellularProperties" title="Biophysical properties related to the intracellular space within the cell, such as the resistivity and the list of species present. caConc and caConcExt are explicitly exposed here to facilitate accessing these values from other Components, even though caConcExt is clearly not an intracellular property ">intracellularProperties</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>membraneProperties</b></td>
+    <td width="100"><a href="Cells.html#membraneProperties" title="Properties specific to the membrane, such as the populations of channels, channelDensities, specificCapacitance, etc. ">membraneProperties</a></td>
+  </tr>
+    <td><b>intracellularProperties</b></td>
+    <td width="100"><a href="Cells.html#intracellularProperties" title="Biophysical properties related to the intracellular space within the cell, such as the resistivity and the list of species present. caConc and caConcExt are explicitly exposed here to facilitate accessing these values from other Components, even though caConcExt is clearly not an intracellular property ">intracellularProperties</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>totSpecCap</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#specificCapacitance">specificCapacitance</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totSpecCap</b> = membraneProperties/totSpecCap&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totSpecCap</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="intracellularProperties">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>intracellularProperties</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Biophysical properties related to the intracellular space within the <a href="Cells.html#cell" title="Cell with segments specified in a morphology element along with details on its biophysicalProperties. NOTE: this can only be correctly simulated using LEMS when there is a single segment in the cell, and v of this cell represents the membrane potential in that isopotential segment!!! ">cell</a>, such as the <a href="Cells.html#resistivity" title="The resistivity, or specific axial resistance, of the cytoplasm ">resistivity</a> and the list of <a href="Cells.html#species" title="Description of a chemical species identified by ion, which has internal, concentration, and external, extConcentration values for its concentration ">species</a> present. <b>caConc</b> and <b>caConcExt</b> are explicitly exposed here to facilitate accessing these values from other Components, even though <b>caConcExt</b> is clearly not an intracellular property </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>resistivity</b></td>
+    <td width="100"><a href="Cells.html#resistivity" title="The resistivity, or specific axial resistance, of the cytoplasm ">resistivity</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Children elements</span>
+  </td>
+    <td><b>speciesList</b></td>
+    <td width="100"><a href="Cells.html#species" title="Description of a chemical species identified by ion, which has internal, concentration, and external, extConcentration values for its concentration ">species</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>caConc</b> = speciesList[ion='ca']/concentration&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>caConc</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF speciesList[ion='ca']/concentration IS ABSENT: <b>caConc</b> = 0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>caConcExt</b> = speciesList[ion='ca']/extConcentration&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>caConcExt</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF speciesList[ion='ca']/extConcentration IS ABSENT: <b>caConcExt</b> = 0<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="resistivity">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>resistivity</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>The resistivity, or specific axial resistance, of the cytoplasm </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>value</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#resistivity">resistivity</a></td>
+  </tr>
+</table>
+
+<a name="concentrationModel">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>concentrationModel</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base for any model of an ion concentration which changes with time. Internal, <b>concentration,</b> and external, <b>extConcentration,</b> values for the concentration of the ion (specified by <b>species)</b> are given. </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>species</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>concentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>extConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>surfaceArea</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+    <td><b>initialConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>initialExtConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>concentration</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#concentration">concentration</a> (exposed as <b>concentration</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>extConcentration</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#concentration">concentration</a> (exposed as <b>extConcentration</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>concentration</b> = initialConcentration<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>extConcentration</b> = initialExtConcentration<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="decayingPoolConcentrationModel">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>decayingPoolConcentrationModel</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Model of buffering of concentration of an ion (currently hard coded to be calcium, due to requirement for <b>iCa)</b> which has a baseline level <b>restingConc</b> and tends to this value with time course <b>decayConstant.</b> The ion is assumed to occupy a shell inside the membrane of thickness <b>shellThickness.</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>restingConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>decayConstant</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>shellThickness</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>species</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>Faraday</b> = 96485.3C_per_mol</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#charge_per_mole">charge_per_mole</a></td>
+  </tr>
+    <td><b>AREA_SCALE</b> = 1m2</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+    <td><b>LENGTH_SCALE</b> = 1m</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#length">length</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>concentration</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>extConcentration</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td style="color:darkgrey"><b>surfaceArea</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>initialConcentration</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>initialExtConcentration</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>iCa</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>concentration</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#concentration">concentration</a> (exposed as <b>concentration</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>extConcentration</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#concentration">concentration</a> (exposed as <b>extConcentration</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>concentration</b> = initialConcentration<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>extConcentration</b> = initialExtConcentration<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>effectiveRadius</b> = LENGTH_SCALE * sqrt(surfaceArea/(AREA_SCALE * (4 * 3.14159)))&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>innerRadius</b> = effectiveRadius - shellThickness&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>shellVolume</b> = (4 * (effectiveRadius * effectiveRadius * effectiveRadius) * 3.14159 / 3) - (4 * (innerRadius * innerRadius * innerRadius) * 3.14159 / 3)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>concentration</b> /dt = iCa / (2 * Faraday * shellVolume) - ((concentration - restingConc) / decayConstant)<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="species">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>species</b>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Description of a chemical species identified by <b>ion,</b> which has internal, <b>concentration,</b> and external, <b>extConcentration</b> values for its concentration </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>initialConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>initialExtConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Text fields</span>
+  </td>
+    <td colspan='2'><b>ion</b></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Component References</span>
+  </td>
+    <td><b>concentrationModel</b></td>
+    <td width="100"><a href="Cells.html#concentrationModel" title="Base for any model of an ion concentration which changes with time. Internal, concentration, and external, extConcentration, values for the concentration of the ion (specified by species) are given. ">concentrationModel</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td><b>concentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>extConcentration</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">Build</span><br/><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>concentration</b> = concentrationModel/concentration&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>concentration</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>extConcentration</b> = concentrationModel/extConcentration&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>extConcentration</b>)
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="cell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>cell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Cell with <a href="Cells.html#segment" title="A segment defines the smallest unit within a possibly branching structure (morphology), such as a dendrite or axon. The shape is given by the proximal and distal points. If proximal is missing, the proximal point is assumed to be the distal point of the parent. parent specifies the parent segment. The first segment (no parent) usually represents the soma. NOTE: LEMS does not yet support multicompartmental modelling, so the Behavior here is only appropriate for single compartment modelling.  ">segment</a>s specified in a <a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a> element along with details on its <a href="Cells.html#biophysicalProperties" title="The biophysical properties of the cell, including the membraneProperties and the intracellularProperties ">biophysicalProperties</a>. NOTE: this can only be correctly simulated using LEMS when there is a single segment in the cell, and <b>v</b> of this cell represents the membrane potential in that isopotential segment!!! </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Child elements</span>
+  </td>
+    <td><b>notes</b></td>
+    <td width="100"><a href="NeuroMLCoreCompTypes.html#notes" title="Human readable notes on the Component ">notes</a></td>
+  </tr>
+    <td><b>morphology</b></td>
+    <td width="100"><a href="Cells.html#morphology" title="The collection of segments which specify the 3D structure of the cell, along with a number of segmentGroups ">morphology</a></td>
+  </tr>
+    <td><b>biophysicalProperties</b></td>
+    <td width="100"><a href="Cells.html#biophysicalProperties" title="The biophysical properties of the cell, including the membraneProperties and the intracellularProperties ">biophysicalProperties</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='9'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>spiking</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>debugVal</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>totChanCurrent</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>totSpecCap</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#specificCapacitance">specificCapacitance</a></td>
+  </tr>
+    <td><b>surfaceArea</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#area">area</a></td>
+  </tr>
+    <td><b>iCa</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>caConc</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+    <td><b>caConcExt</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#concentration">concentration</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Requirements</span>
+  </td>
+    <td><b>temperature</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#temperature">temperature</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>spiking</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>debugVal</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>debugVal</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = initMembPot<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh AND spiking &lt; 0.5 THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &lt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>spiking</b> = 0<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt;= 0 THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>debugVal</b> = debug<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>initMembPot</b> = biophysicalProperties/membraneProperties/initMembPotential/value&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>thresh</b> = biophysicalProperties/membraneProperties/spikeThresh/value&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>debug</b> = biophysicalProperties/membraneProperties/totChanCurrent&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>surfaceArea</b> = morphology/segment/surfaceArea&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>surfaceArea</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totSpecCap</b> = biophysicalProperties/totSpecCap&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totSpecCap</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>totCap</b> = totSpecCap * surfaceArea &nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iChannels</b> = biophysicalProperties/membraneProperties/totChanCurrent&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>totChanCurrent</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iSyn</b> = synapses[*]/i&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iCa</b> = biophysicalProperties/membraneProperties/iCa&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iCa</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>caConc</b> = biophysicalProperties/intracellularProperties/caConc&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>caConc</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>caConcExt</b> = biophysicalProperties/intracellularProperties/caConcExt&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>caConcExt</b>)
+<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = (iChannels + iSyn) / totCap<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="baseCellMembPotCap">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseCellMembPotCap</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Any cell with a membrane potential <b>v</b> with voltage units and a membrane capacitance <b>C.</b> Also defines exposed value <b>iSyn</b> for current due to external synapses and <b>iMemb</b> for total current crossing membrane (normally channel currents plus <b>iSyn)</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>C</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Total capacitance of the cell membrane</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>iSyn</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Total current due to synaptic inputs</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>iMemb</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>Total current crossing the cell membrane</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+</table>
+
+<a name="baseIaf">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseIaf</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential <b>thresh</b> and and resets to <b>reset</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>thresh</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>The membrane potential at which to emit a spiking event and reset voltage</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>reset</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color:dimgrey;font-size:12px"><i>The value the membrane potential is reset to on spiking</i></span></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+</table>
+
+<a name="iafTauCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>iafTauCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Integrate and fire cell which returns to its leak reversal potential of <b>leakReversal</b> with a time course <b>tau</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='4'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>thresh</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>reset</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>leakReversal</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>tau</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = (leakReversal - v) / tau<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="iafTauRefCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>iafTauRefCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#iafTauCell" title="Integrate and fire cell which returns to its leak reversal potential of leakReversal with a time course tau ">iafTauCell</a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Integrate and fire cell which returns to its leak reversal potential of <b>leakReversal</b> with a time course <b>tau.</b> It has a refractory period of <b>refract</b> after spiking </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='5'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>thresh</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>reset</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIaf" title="Base ComponentType for an integrate and fire cell which emits a spiking event at membrane potential thresh and and resets to reset "><span  style="color:#85ACE1">baseIaf</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>leakReversal</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#iafTauCell" title="Integrate and fire cell which returns to its leak reversal potential of leakReversal with a time course tau ">iafTauCell</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>tau</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#iafTauCell" title="Integrate and fire cell which returns to its leak reversal potential of leakReversal with a time course tau ">iafTauCell</a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>refract</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>lastSpikeTime</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#time">time</a><br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+<br/>
+<span class="label">Regime: refractory</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Entry</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>lastSpikeTime</b> = t<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; lastSpikeTime + refract THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRANSITION to REGIME <b>integrating</b><br/>
+<br/>
+<span class="label">Regime: integrating (initial)</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRANSITION to REGIME <b>refractory</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = (leakReversal - v) / tau<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="baseIafCapCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>baseIafCapCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Base Type for all Integrate and Fire cells with a capacitance <b>C,</b> threshold <b>thresh</b> and reset membrane potential <b>reset</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+    <td><b>thresh</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>reset</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iSyn</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iMemb</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+</table>
+
+<a name="iafCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>iafCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseIafCapCell" title="Base Type for all Integrate and Fire cells with a capacitance C, threshold thresh and reset membrane potential reset "><span  style="color:#85ACE1">baseIafCapCell</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Integrate and fire cell with capacitance <b>C,</b> <b>leakConductance</b> and <b>leakReversal</b> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='5'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>thresh</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIafCapCell" title="Base Type for all Integrate and Fire cells with a capacitance C, threshold thresh and reset membrane potential reset "><span  style="color:#85ACE1">baseIafCapCell</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>reset</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseIafCapCell" title="Base Type for all Integrate and Fire cells with a capacitance C, threshold thresh and reset membrane potential reset "><span  style="color:#85ACE1">baseIafCapCell</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>leakConductance</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductance">conductance</a></td>
+  </tr>
+    <td><b>leakReversal</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iSyn</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iMemb</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iSyn</b> = synapses[*]/i&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iSyn</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iMemb</b> = leakConductance * (leakReversal - v) + iSyn&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iMemb</b>)
+<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = iMemb / C<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="izhikevichCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>izhikevichCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Cell based on the model of Izhikevich, see <a href="http://izhikevich.org/publications/spikes.htm">http://izhikevich.org/publications/spikes.htm</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='9'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>v0</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>a</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>b</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>c</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>d</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>thresh</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>Iamp</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>Idel</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>Idur</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>MSEC</b> = 1ms</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>MVOLT</b> = 1mV</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='3'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>U</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>I</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrentDL" title="Base type for all ComponentTypes which produce a dimensionless current I. There will eventually be dimensionless equivalents of all the core current producing ComponentTypes such as pulseGenerator, sineGenerator and rampGenerator "><span  style="color:#85ACE1">basePointCurrentDL</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>U</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>U</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>I</b>)
+<br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = v0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>U</b> = v0 * b / MVOLT<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = 0<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = c * MVOLT<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>U</b> = U + d<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; Idel AND t &lt; Idel + Idur THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = Iamp<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; Idel + Idur THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = 0<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>ISyn</b> = synapses[*]/I&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = (0.04 * v^2 / MVOLT + 5 * v + (140.0 - U + I + ISyn) * MVOLT)/MSEC<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>U</b> /dt = a * (b * v / MVOLT - U) / MSEC<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="adExIaFCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>adExIaFCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Model based on Brette R and Gerstner W (2005) Adaptive Exponential Integrate-and-Fire Model as an Effective Description of Neuronal Activity. J Neurophysiol 94:3637-3642 </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='14'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td style="color:darkgrey"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#capacitance">capacitance</a></td>
+  </tr>
+    <td><b>gL</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductance">conductance</a></td>
+  </tr>
+    <td><b>EL</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>VT</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>thresh</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>reset</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>delT</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td><b>tauw</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>refract</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>Iamp</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>Idel</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>Idur</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+    <td><b>a</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#conductance">conductance</a></td>
+  </tr>
+    <td><b>b</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='5'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#voltage">voltage</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iSyn</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td style="color:darkgrey"><b>iMemb</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotCap" title="Any cell with a membrane potential v with voltage units and a membrane capacitance C. Also defines exposed value iSyn for current due to external synapses and iMemb for total current crossing membrane (normally channel currents plus iSyn) "><span  style="color:#85ACE1">baseCellMembPotCap</span></a>)</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>w</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+    <td><b>I</b></td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#current">current</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPot" title="Any cell which has a membrane potential v with voltage units. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPot</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Attachments</span>
+  </td>
+    <td><b>synapses</b></td>
+    <td width="100"><a href="Inputs.html#basePointCurrent" title="Base type for all ComponentTypes which produce a current i (with dimension current) "><span  style="color:#85ACE1">basePointCurrent</span></a></td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#voltage">voltage</a> (exposed as <b>v</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>w</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#current">current</a> (exposed as <b>w</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#current">current</a> (exposed as <b>I</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>lastSpikeTime</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="NeuroMLCoreDimensions.html#time">time</a><br/>
+<br/>
+<span class="label">On Start</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = EL<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>w</b> = 0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = 0<br/>
+<br/>
+<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; Idel AND t &lt; Idel + Idur THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = Iamp<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; Idel + Idur THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>I</b> = 0<br/>
+<br/>
+<span class="label">Derived Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iSyn</b> = synapses[*]/i&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iSyn</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>iMemb</b> = -1 * gL * (v - EL) + gL * delT * exp((v - VT) / delT) - w + I + iSyn&nbsp;&nbsp;&nbsp;&nbsp; (exposed as <b>iMemb</b>)
+<br/>
+<br/>
+<span class="label">Regime: refractory</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Entry</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>lastSpikeTime</b> = t<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>v</b> = reset<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>w</b> = w + b<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF t &gt; lastSpikeTime + refract THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRANSITION to REGIME <b>integrating</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d <b>w</b> /dt = (a * (v - EL) - w) / tauw<br/>
+<br/>
+<span class="label">Regime: integrating (initial)</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">On Conditions</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF v &gt; thresh THEN<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVENT OUT on port <b>spike</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRANSITION to REGIME <b>refractory</b><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d <b>v</b> /dt = iMemb / C<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d <b>w</b> /dt = (a * (v - EL) - w) / tauw<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+<a name="fitzHughNagumoCell">&nbsp;</a>
+<table class="table table-bordered">
+  <tr>
+    <td colspan='3'>
+       <b>fitzHughNagumoCell</b>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;extends <a href="Cells.html#baseCellMembPotDL" title="Any cell which has a dimensioness membrane potential, V. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPotDL</span></a></p>    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>
+      <span  style="color:dimgrey"><i>Simple dimensionless model of spiking cell from FitzHugh and Nagumo. Based on <a href="http://www.scholarpedia.org/article/FitzHugh-Nagumo_model">http://www.scholarpedia.org/article/FitzHugh-Nagumo_model</a> </i></span>    </td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-success">Parameters</span>
+  </td>
+    <td><b>I</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Constants</span>
+  </td>
+    <td><b>SEC</b> = 1s</td>
+    <td width="100"><a href="NeuroMLCoreDimensions.html#time">time</a></td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='2'>
+    <span class="label label-info">Exposures</span>
+  </td>
+    <td style="color:darkgrey"><b>V</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotDL" title="Any cell which has a dimensioness membrane potential, V. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPotDL</span></a>)</td>
+    <td width="100">Dimensionless</td>
+  </tr>
+    <td><b>W</b></td>
+    <td width="100">Dimensionless</td>
+  </tr>
+  <tr>
+  <td width="70" rowspan='1'>
+    <span class="label label-info">Event Ports</span>
+  </td>
+    <td style="color:darkgrey"><b>spike</b>&nbsp;&nbsp;&nbsp;&nbsp;(from <a href="Cells.html#baseCellMembPotDL" title="Any cell which has a dimensioness membrane potential, V. These will emit spike events. "><span  style="color:#85ACE1">baseCellMembPotDL</span></a>)</td>
+    <td width="100">Direction: out</td>
+  </tr>
+<tr>
+  <td width="70" rowspan='1'>
+    <span class="label ">Behavior</span>
+  </td>
+<td colspan='2'>
+<span class="label">State Variables</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>V</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>V</b>)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>W</b>&nbsp;&nbsp;&nbsp;&nbsp;Dimensionless (exposed as <b>W</b>)
+<br/>
+<br/>
+<span class="label">Time Derivatives</span><br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>V</b> /dt = (V - (V^3) / 3 - W + I) / SEC<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;d <b>W</b> /dt = (0.08 * (V + 0.7 - 0.8 * W)) / SEC<br/>
+<br/>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+</div>
+</body>

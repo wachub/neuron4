@@ -1,0 +1,54 @@
+<Lems>
+
+        <!-- Example with instances of cells in populations having different parameters... -->
+
+
+
+
+
+
+
+             <!-- NOT YET FULLY TESTED!!!! -->
+
+
+
+
+
+
+<!-- Specify which component to run -->
+<DefaultRun component="sim1"/>
+
+<!-- Include core NeuroML2 ComponentType definitions -->
+<Include file="NeuroML2CoreTypes/Cells.xml"/>
+<Include file="NeuroML2CoreTypes/Networks.xml"/>
+<Include file="NeuroML2CoreTypes/Simulation.xml"/>
+
+
+
+        <!-- Main NeuroML2 content. Based on http://www.izhikevich.org/publications/figure1.m -->
+
+<izhikevichCell id="izMixed" v0 = "-70mV" thresh = "30mV" a ="0.02" b = "0.2" c = "-55.0" d = "4" Iamp="10" Idel="20ms" Idur="2000ms"/>
+
+<network id="net1">
+    <populationList id="izpop" component="izMixed">
+        <networkElementInstance id="0"/>
+        <networkElementInstance id="1"/>
+        <networkElementInstance id="2"/>
+    </populationList>
+</network>
+
+        <!-- End of NeuroML2 content -->
+
+
+<Simulation id="sim1" length="200ms" step="0.005ms" target="net1">
+
+    <Display id="d1" title="Ex13: Izhikevich cell in LEMS" timeScale="1ms">
+        <Line id ="iz0" quantity="izpop[0]/v" scale="1mV"  color="#ee40FF" save="examples/testResults/iz_V_0.dat"/>
+        <Line id ="iz1" quantity="izpop[1]/v" scale="1mV"  color="#eeffFF" save="examples/testResults/iz_V_1.dat"/>
+        <Line id ="iz2" quantity="izpop[2]/v" scale="1mV"  color="#40eeFF" save="examples/testResults/iz_V_2.dat"/>
+    </Display>
+
+
+</Simulation>
+
+</Lems>

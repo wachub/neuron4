@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." name="LEMS-IDE">
+    <property name="project.dir" value="../../../LEMS"/>
+    <property name="ant.script" value="${project.dir}/build.xml"/>
+    <!-- TODO: edit the following target according to your needs -->
+    <!-- (more info: http://www.netbeans.org/kb/articles/freeform-config.html#runsingle) -->
+    <target name="run-selected-file-in-src">
+        <fail unless="run.class">Must set property 'run.class'</fail>
+        <ant antfile="${ant.script}" inheritall="false" target="jar"/>
+        <java classname="${run.class}" failonerror="true" fork="true">
+            <classpath>
+
+                <pathelement path="../../../LEMS/lems-0.8.3.jar"/>
+
+            </classpath>
+        </java>
+    </target>
+</project>

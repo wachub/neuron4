@@ -1,0 +1,195 @@
+<html><title>Synapses</title>
+<body>
+
+<h1>NeuroML 2 definitions from Synapses.xml</h1>
+
+<p>Included file: <a href="NeuroMLCoreCompTypes.html">NeuroMLCoreCompTypes.xml</a></p>
+<h2>pointCurrent</h2>
+<table>
+<tr>
+<td>
+Base class for all ComponentTypes which produce a current</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>i</b> current<br/>
+</td>
+</tr>
+</tr></table>
+<h2>synapse</h2>
+<table>
+<tr>
+<td>
+Base class for all synapses, ComponentTypes which produce a current and change behavior in response to an incoming event. cno_0000009</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</tr></table>
+<h2>conductanceBasedSynapse</h2>
+<table>
+<tr>
+<td>
+Synapse model which exposes a conductance in addition to producing a current. Not necessarily ohmic!! cno_0000027</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>gbase</b> conductance<br/>
+&nbsp;&nbsp;&nbsp;<b>erev</b> voltage<br/>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>g</b> conductance<br/>
+</td>
+</tr>
+</tr></table>
+<h2>expOneSynapse</h2>
+<table>
+<tr>
+<td>
+Ohmic synapse model whose conductance rises instantaneously by gbase on receiving an event, and which decays exponentially to zero with time course tauDecay</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>tauDecay</b> time<br/>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</tr></table>
+<h2>expTwoSynapse</h2>
+<table>
+<tr>
+<td>
+Ohmic synapse model whose conductance waveform on receiving an event has a rise time of tauRise and a decay time of tauDecay. Max conductance reached during this time (assuming zero conductance before) is gbase</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>tauRise</b> time<br/>
+&nbsp;&nbsp;&nbsp;<b>tauDecay</b> time<br/>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</tr></table>
+<h2>block</h2>
+<table>
+<tr>
+<td>
+Base of any ComponentType which produces a varying block/scaling of synaptic strength</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>scaling</b> none<br/>
+</td>
+</tr>
+</tr></table>
+<h2>voltageConcDepBlock</h2>
+<table>
+<tr>
+<td>
+Synaptic blocking mechanism which varys with membrane potential across the synapse, e.g. in NMDA receptor mediated synapses</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>blockConcentration</b> concentration<br/>
+&nbsp;&nbsp;&nbsp;<b>scalingConc</b> concentration<br/>
+&nbsp;&nbsp;&nbsp;<b>scalingVolt</b> voltage<br/>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</tr></table>
+<h2>nmdaSynapse</h2>
+<table>
+<tr>
+<td>
+NMDA receptor mediated synapse, whose conductance is scaled by a factor dependent on the concentration of magnesium (assumed fixed) and membrane potential</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</tr></table>
+<h2>stpMechanism</h2>
+<table>
+<tr>
+<td>
+ComponentType for model of short term plasticity. Used in stpSynapse. Note, need to enable passing of spike events to child elements so that stpMechanism can contain the state variables R, U, etc. and update them appropriately. cno_0000182</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>initReleaseProb</b> none<br/>
+&nbsp;&nbsp;&nbsp;<b>tauFac</b> time<br/>
+&nbsp;&nbsp;&nbsp;<b>tauRec</b> time<br/>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>initReleaseProb</b> none<br/>
+&nbsp;&nbsp;&nbsp;<b>tauFac</b> time<br/>
+&nbsp;&nbsp;&nbsp;<b>tauRec</b> time<br/>
+</td>
+</tr>
+</tr></table>
+<h2>stpSynapse</h2>
+<table>
+<tr>
+<td>
+Short term plasticity model based on Tsodyks, M., Uziel, A., and Markram, H. (2000). Synchrony generation in recurrent networks with frequency-dependent synapses. J Neurosci 20, RC50. and Tsodyks, M.V., and Markram, H. (1997). The neural code between neocortical pyramidal neurons depends on neurotransmitter release probability. Proc Natl Acad Sci U S A 94, 719-723. cno_0000188</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>tsince</b> time<br/>
+&nbsp;&nbsp;&nbsp;<b>R</b> none<br/>
+&nbsp;&nbsp;&nbsp;<b>U</b> none<br/>
+</td>
+</tr>
+</tr></table>
+<h2>stdpSynapse</h2>
+<table>
+<tr>
+<td>
+Spike timing dependent plasticity mechanism,  NOTE: EXAMPLE NOT YET WORKING!!!! cno_0000034</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;<b>tsince</b> time<br/>
+&nbsp;&nbsp;&nbsp;<b>M</b> none<br/>
+&nbsp;&nbsp;&nbsp;<b>P</b> none<br/>
+</td>
+</tr>
+</tr></table>
+</body>

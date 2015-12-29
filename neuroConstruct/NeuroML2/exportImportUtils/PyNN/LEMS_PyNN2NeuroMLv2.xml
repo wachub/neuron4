@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<Lems>
+	<DefaultRun component="simulation_PyNN2NeuroMLv2"/>
+	<Include file="NeuroML2CoreTypes/NeuroMLCoreDimensions.xml"/>
+	<Include file="NeuroML2CoreTypes/PyNN.xml"/>
+	<Include file="NeuroML2CoreTypes/Networks.xml"/>
+	<Include file="NeuroML2CoreTypes/Simulation.xml"/>
+	<Include file="PyNN2NeuroMLv2.nml"/>
+	<Simulation id="simulation_PyNN2NeuroMLv2" length="500.0ms" step="0.01ms" target="network_PyNN2NeuroMLv2">
+		<Display id="display_0" timeScale="1ms" title="Recording of PyNN model run in LEMS">
+			<Line color="#000000" id="line_pop_IF_curr_alpha" quantity="pop_IF_curr_alpha[0]/v" save="pop_IF_curr_alpha_0_v_nml2.dat" scale="1"/>
+			<Line color="#FF0000" id="line_pop_IF_curr_exp" quantity="pop_IF_curr_exp[0]/v" save="pop_IF_curr_exp_0_v_nml2.dat" scale="1"/>
+			<Line color="#0000FF" id="line_pop_IF_cond_alpha" quantity="pop_IF_cond_alpha[0]/v" save="pop_IF_cond_alpha_0_v_nml2.dat" scale="1"/>
+			<Line color="#009b00" id="line_pop_IF_cond_exp" quantity="pop_IF_cond_exp[0]/v" save="pop_IF_cond_exp_0_v_nml2.dat" scale="1"/>
+			<Line color="#ffc800" id="line_pop_EIF_cond_exp_isfa_ista" quantity="pop_EIF_cond_exp_isfa_ista[0]/v" save="pop_EIF_cond_exp_isfa_ista_0_v_nml2.dat" scale="1"/>
+			<Line color="#8c6400" id="line_pop_HH_cond_exp" quantity="pop_HH_cond_exp[0]/v" save="pop_HH_cond_exp_0_v_nml2.dat" scale="1"/>
+			<Line color="#ff00ff" id="line_pop_post1" quantity="pop_post1[0]/v" save="pop_post1_0_v_nml2.dat" scale="1"/>
+			<Line color="#ffff00" id="line_pop_post2" quantity="pop_post2[0]/v" save="pop_post2_0_v_nml2.dat" scale="1"/>
+		</Display>
+	</Simulation>
+</Lems>

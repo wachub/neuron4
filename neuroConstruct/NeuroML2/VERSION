@@ -1,0 +1,6 @@
+version.major=2
+version.minor=0
+version.release=0
+version.date=9-July-2011
+version.number=${version.major}.${version.minor}.${version.release}
+ 

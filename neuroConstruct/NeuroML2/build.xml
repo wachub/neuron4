@@ -1,0 +1,678 @@
+<project name="libNeuroML" default="jarnml" basedir=".">
+
+    <description>NeuroML 2 examples and tests</description>
+ 
+    <dirname property="basedir" file="${ant.file.NeuroML2}"/>
+	
+    <target name="initnml"   description="Initialises project, makes build dir">
+
+        <dirname property="libnml.basedir" file="${ant.file.libNeuroML}"/> <!--Need to specify lems. prefix as it's imported by docs & nC -->
+
+        <property file="${libnml.basedir}/VERSION"/>
+
+        <property name="lems.jar.dir" value="${libnml.basedir}/lib/lems"/>
+        <property name="jsbml.jar.dir" value="${libnml.basedir}/lib/jsbml"/>
+
+        <property name="main.nml.jar" value="${libnml.basedir}/libNeuroML-${version.number}.jar"/>
+
+        <property name="src.nml.dir" value="${libnml.basedir}/src"/>
+        <property name="test.nml.dir" value="${libnml.basedir}/test"/>
+        <property name="build.nml.dir" value="${libnml.basedir}/build"/>
+
+
+        <property name="temp.nml.dir" value="${libnml.basedir}/temp/"/>
+        <property name="temp.nml.dir.ver" value="${libnml.basedir}/neuroml-${version.number}"/>
+
+        <property name="examples.dir" value="${libnml.basedir}/examples"/>
+        <property name="test.results.dir" value="${examples.dir}/testResults"/>
+
+        <path id="compile.classpath">
+            <fileset dir="${lems.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${jsbml.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+        </path>
+
+
+        <path id="run.classpath">
+            <pathelement location="${main.nml.jar}"/>
+            <fileset dir="${lems.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${jsbml.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+            <!--<fileset dir="${libnml.basedir}/lib/cellmlapi">
+                <include name="*.jar"/>
+            </fileset>-->
+        </path>
+
+        <path id="test.classpath">
+            <pathelement location="${main.nml.jar}"/>
+            <fileset dir="${lems.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${jsbml.jar.dir}">
+                <include name="*.jar"/>
+            </fileset>
+            <pathelement location="${libnml.basedir}/lib/junit/junit-4.8.1.jar"/>
+            <pathelement location="${libnml.basedir}/lib/junit/junit-4.8.1-src.jar"/>
+
+        </path>
+        <echo>Initialising NeuroML with base dir: ${libnml.basedir}, jar file: ${main.nml.jar}</echo>
+
+        <mkdir dir="${build.nml.dir}"/>
+    </target>
+
+        
+    <target name="compilenml" depends="initnml" description="Compiles the source code">
+
+        <echo>Compiling NeuroML code to dir: ${build.nml.dir}</echo>
+	 	 
+        <javac srcdir="${src.nml.dir}"
+	               destdir="${build.nml.dir}"
+	               debug="true"
+	               optimize="${optimize}"
+	               compiler="modern"
+	               source="1.5"
+	               target="1.5"
+	               includeantruntime="false"
+	               classpathref = "compile.classpath">
+            <include name="**/*.java"/>
+            <exclude name="**/CellMLImporter.java"/>                <!--Temp excluding CellML support-->
+        </javac>
+    </target>
+
+
+    <target name="compiletestsnml" depends="compilenml"
+          description="Compiles the test code">
+  	
+        <javac srcdir="${test.nml.dir}"
+               destdir="${build.nml.dir}"
+               debug="true"
+               optimize="${optimize}"
+               compiler="modern"
+               source="1.5"
+               target="1.5"
+               includeantruntime="false">
+            <classpath refid="test.classpath"/>
+            <include name="**/*.java"/>
+            <exclude name="**/CellMLImporter.java"/>                <!--Temp excluding CellML support-->
+
+        </javac>
+    </target>
+
+
+
+    <target name="jarnml" depends="compilenml" description="Creates main Jar file">
+
+        <jar destfile="${main.nml.jar}">
+            <fileset dir="${build.nml.dir}"/>
+            <manifest>
+                <attribute name="Main-Class" value="org.neuroml.Main"/>
+            </manifest>
+        </jar>
+    </target>
+   
+    
+
+    <target name="jartestsnml" depends="compiletestsnml"
+            description="Creates main Jar file including test classes">
+
+        <jar destfile="${main.nml.jar}">
+            <fileset dir="${build.nml.dir}"/>
+            <manifest>
+                <attribute name="Main-Class" value="org.neuroml.Main"/>
+            </manifest>
+        </jar>
+    </target>
+ 
+
+    <target name="zipnml" depends="cleannml, cleangen, jarnml" description="Creates a zip file with all required files incl jar">
+
+
+        <delete dir="${temp.nml.dir}"/>
+        <mkdir dir="${temp.nml.dir}"/>
+        <mkdir dir="${temp.nml.dir.ver}"/>
+
+        <copy todir="${temp.nml.dir.ver}">
+            <fileset dir=".">
+                <exclude name="${temp.nml.dir.ver}"/>
+                <exclude name="${build.nml.dir}"/>
+                <exclude name="${temp.nml.dir}"/>
+                <exclude name="${libnml.basedir}/nCproject/LemsTest/simulations/"/>
+                <exclude name="${libnml.basedir}/nCproject/LemsTest/generated*/"/>
+                <exclude name="${libnml.basedir}/docs/site/"/>
+            </fileset>
+        </copy>
+
+
+        <zip destfile="${libnml.basedir}/neuroml-${version.number}.zip"
+            basedir="${temp.nml.dir}"
+            whenempty="create"/>
+
+        <delete dir="${temp.nml.dir}"/>
+
+
+    </target>
+
+
+    <target name="test" depends="cleannml, jartestsnml"
+            description="Tests the main NeuroML version 2.0 code">
+
+        <!-- Only used if LEMS source is checked out in specified location; gets latest jar if present -->
+        <copy todir="${lems.jar.dir}" failonerror="false">
+            <fileset dir="../../fullNeuroMLCheckout/LEMS/" includes="*.jar"/>
+        </copy>
+
+        <java classname="org.neuroml.test.MainTest" fork="true">
+            <jvmarg value="-Xmx400M" />
+            <classpath refid="test.classpath"/>
+        </java>
+    </target>
+
+    <target name="testValidity" depends="cleannml, jartestsnml"
+            description="Tests the validity of a number of NeuroML version 2.0 files">
+
+        <java classname="org.neuroml.test.ValidityTest" fork="true">
+            <jvmarg value="-Xmx100M" />
+            <classpath refid="test.classpath"/>
+        </java>
+    </target>
+
+
+
+
+    <target name="testBrian" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex9 generating Python for Brian">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="${examples.dir}/LEMS_NML2_Ex0_IaF.xml"/>-->
+            <arg value="${examples.dir}/LEMS_NML2_Ex9_FN.xml"/>
+            <arg value="-brian"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testModelica" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex9 generating Modelica">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="${examples.dir}/LEMS_NML2_Ex0_IaF.xml"/>-->
+            <arg value="${examples.dir}/LEMS_NML2_Ex9_FN.xml"/>
+            <arg value="-modelica"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="testMatlab" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex1 generating MATLAB">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="${examples.dir}/LEMS_NML2_Ex0_IaF.xml"/>-->
+            <arg value="${examples.dir}/LEMS_NML2_Ex9_FN.xml"/>
+            <arg value="-matlab"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="testGraph" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex1 generating GraphViz file">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="examples/LEMS_NML2_Ex0_IaF.xml"/>-->
+            <arg value="examples/LEMS_NML2_Ex1_HH.xml"/>
+           <!--<arg value="${examples.dir}/LEMS_NML2_ExN_AllCells.xml"/>
+           <arg value="examples/LEMS_NML2_Ex2_Izh.xml"/>-->
+             <!--<arg value="examples/LEMS_NML2_Ex9_FN.xml"/>-->
+            <arg value="-graph"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="graphCompTypes" depends="jarnml"
+            description="Generates graph of all NeuroML ComponentTypes">
+
+        <java classname="org.neuroml.exporters.GraphWriter" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+
+    <target name="testNeuron1" depends="jarnml"
+            description="Generates NEURON mod/hoc for a single NeuroML v2 example">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="examples/LEMS_NML2_Ex0_IaF.xml"/>
+            <!--<arg value="examples/NeuroML2_Ex1_HH.xml"/>-->
+            <!--<arg value="${examples.dir}/NeuroML2_Ex2_Izh.xml"/>
+            <arg value="examples/NeuroML2_Ex8_AdEx.xml"/>-->
+            <!--<arg value="${examples.dir}/NeuroML2_Ex9_FN.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_ExN_AllCells.xml"/>-->
+            <arg value="-neuron"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testNeuron2" depends="jarnml"
+            description="Generates NEURON mod/hoc for a single NeuroML v2 example">
+
+        <java classname="org.neuroml.exporters.NeuronWriter" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testNeuron" depends="cleangen, jartestsnml"
+            description="Generates NEURON mod/hoc for all compatible NeuroML v2 examples">
+
+        <java classname="org.neuroml.test.export.NeuronTest" fork="true">
+            <classpath refid="run.classpath"/>
+        </java>
+
+        <exec executable="nrnivmodl" dir="${examples.dir}"/>
+        <exec executable="nrngui" dir="${examples.dir}" spawn="false">
+            <arg line="-python"/>
+            <arg line="LEMS_NML2_Ex8_AdEx_nrn.py"/>
+            <arg line="&amp;"/>
+        </exec>
+    </target>
+
+    <target name="testNineML" depends="jarnml"
+            description="Tests the NeuroML version 2 example generating NineML">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="examples/LEMS_NML2_Ex1_HH.xml"/>-->
+            <arg value="${examples.dir}/LEMS_NML2_Ex2_Izh.xml"/>
+            
+            <!--<arg value="examples/LEMS_NML2_Ex6_NMDA.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_Ex7_STP.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_Ex8_AdEx.xml"/>-->
+            
+            
+            <!--<arg value="examples/LEMS_NML2_Ex0_IaF.xml"/>-->
+            <arg value="-nineml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testSBML" depends="jarnml"
+            description="Tests the NeuroML version 2 example generating SBML">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="examples/LEMS_NML2_Ex1_HH.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_Ex0_IaF.xml"/>-->
+
+            <!--<arg value="${examples.dir}/LEMS_NML2_Ex2_Izh.xml"/>-->
+            <arg value="examples/LEMS_NML2_Ex8_AdEx.xml"/>
+            <arg value="-sbml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testSEDML" depends="jarnml"
+            description="Tests the NeuroML version 2 example generating SEDML">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <!--<arg value="examples/LEMS_NML2_Ex1_HH.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_Ex0_IaF.xml"/>-->
+
+            <!--<arg value="${examples.dir}/LEMS_NML2_Ex2_Izh.xml"/>-->
+            <!--<arg value="examples/LEMS_NML2_Ex8_AdEx.xml"/>-->
+            <arg value="${examples.dir}/LEMS_NML2_Ex9_FN.xml"/>
+            <arg value="-sedml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="testSBMLAll" depends="jartestsnml"
+            description="Tests a number of the NeuroML version 2 examples generating SBML">
+
+        <java classname="org.neuroml.test.export.SBMLWriterTest" fork="true">
+            <jvmarg value="-Xmx100M" />
+            <classpath refid="test.classpath"/>
+        </java>
+    </target>
+
+    <target name="testSBMLRead" depends="jartestsnml"
+            description="Tests loading SBML and generating neuroml">
+
+        <java classname="org.neuroml.importers.SBMLImporter" fork="true">
+            <jvmarg value="-Xmx6000M" />
+            <jvmarg value="-Xms6000M" />
+            <classpath refid="test.classpath"/>
+        </java>
+    </target>
+
+    <!--<target name="testCellMLRead" depends="jartests"
+            description="Tests loading CellML and generating LEMS">
+
+        <java classname="org.neuroml.importers.CellMLImporter" fork="true">
+            <jvmarg value="-Xmx100M" />-->
+            <!--<jvmarg value="-Djava.library.path=/usr/local/lib:/home/padraig/Soft/CellML_DOM_API-1.8"/>-->
+            <!--<classpath refid="test.classpath"/>
+        </java>
+    </target>-->
+
+    <target name="testTemp" depends="jarnml"
+            description="Tests a temporary example...">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx500M" />
+
+            <!--<arg value="examples/LEMS_NML2_Ex1_HH.xml"/>-->
+            <arg value="${examples.dir}/inprogress/LEMS_Grid.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="nml2_0" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex0">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex0_IaF.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="nml2_1" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex1">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx500M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex1_HH.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_2" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex2">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex2_Izh.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="nml2_3" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex3">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex3_Net.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_4" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex4">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex4_KS.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+    <target name="nml2_5" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex5">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex5_DetCell.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_6" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex6">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex6_NMDA.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_7" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex7">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex7_STP.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_8" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex8">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex8_AdEx.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_9" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex9">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex9_FN.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_10" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex10">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+            <arg value="${examples.dir}/LEMS_NML2_Ex10_Q10.xml"/>
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_11" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex11">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+            <arg value="${examples.dir}/LEMS_NML2_Ex11_STDP.xml"/>
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_12" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex12">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+            <arg value="${examples.dir}/LEMS_NML2_Ex12_Net2.xml"/>
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_13" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex13">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex13_Instances.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_14" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex14">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex14_PyNN.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_15" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex15">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx500M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex15_CaDynamics.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_16" depends="jarnml"
+            description="Tests the NeuroML version 2 example Ex16">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx500M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_Ex16_Inputs.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+    <target name="nml2_N" depends="jarnml"
+            description="Tests the NeuroML version 2 example ExN">
+
+        <java classname="org.neuroml.Main" fork="true">
+            <jvmarg value="-Xmx100M" />
+
+            <arg value="${examples.dir}/LEMS_NML2_ExN_AllCells.xml"/>
+
+            <classpath refid="run.classpath"/>
+        </java>
+    </target>
+
+
+
+    <target name="cleannml" description="Removes the built files" depends="initnml">
+
+        <delete dir="${build.nml.dir}"/>
+        <mkdir dir="${build.nml.dir}"/>
+        <delete>
+            <fileset dir="${libnml.basedir}" includes="*.jar"/>
+            <fileset dir="${libnml.basedir}" includes="neuroml-*.zip"/>
+        </delete>
+
+    </target>
+
+    <target name="cleangen" description="Removes the generated NeuroML 2 Python, 9ML etc. files, ChannelMLConvert files. " depends="initnml">
+
+        <echo>Cleaning NeuroML generated files in: ${examples.dir}</echo>
+        <delete dir="${examples.dir}/x86_64"/>
+        <delete dir="${examples.dir}/i386"/>
+        <delete dir="${examples.dir}/umac"/>
+        <delete>
+            <fileset dir="${examples.dir}" includes="*.py"/>
+            <fileset dir="${examples.dir}" includes="*.sbml"/>
+            <fileset dir="${examples.dir}" includes="*.9ml"/>
+            <fileset dir="${examples.dir}" includes="*.mod"/>
+            <fileset dir="${examples.dir}" includes="*.gv"/>
+            <fileset dir="${examples.dir}" includes="*.png"/>
+            <fileset dir="${examples.dir}" includes="*-ccl.xml"/>
+            <fileset dir="${examples.dir}" includes="*_SBML.xml"/>
+            <fileset dir="${examples.dir}" includes="*.dat"/>
+            <fileset dir="${examples.dir}" includes="*.o"/>
+            <fileset dir="${examples.dir}" includes="*.c"/>
+            <fileset dir="${examples.dir}" includes="*.dll"/>
+            <fileset dir="${examples.dir}" includes="*.m"/>
+            <fileset dir="${examples.dir}" includes="*.mo"/>
+            <fileset dir="${examples.dir}" includes="*.mos"/>
+            <fileset dir="${examples.dir}" includes="*.csv"/>
+            <fileset dir="${examples.dir}" includes="*.c"/>
+            <fileset dir="${examples.dir}" includes="*.h"/>
+            <fileset dir="${examples.dir}" includes="simReport.txt"/>
+        </delete>
+        <delete>
+            <fileset dir="${libnml.basedir}/python/examples" includes="*.xml"/>
+            <fileset dir="${libnml.basedir}/python/examples" includes="*.dat"/>
+        </delete>
+        <delete>
+            <fileset dir="${libnml.basedir}/ChannelMLConvert" includes="*.nml"/>
+        </delete>
+        <delete>
+            <fileset dir="${libnml.basedir}/exportImportUtils/PyNN" includes="*.dat"/>
+            <fileset dir="${libnml.basedir}/exportImportUtils/PyNN/Results" includes="*.dat"/>
+            <fileset dir="${libnml.basedir}/exportImportUtils/PyNN/Results" includes="*.v"/>
+        </delete>
+        <delete>
+            <fileset dir="${test.results.dir}" includes="*.dat"/>
+        </delete>
+        <delete>
+            <fileset dir="${examples.dir}/inprogress" includes="*.dat"/>
+            <fileset dir="${examples.dir}/inprogress/ab" includes="*.dat"/>
+        </delete>
+
+    </target>
+	
+</project>

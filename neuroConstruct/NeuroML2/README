@@ -1,0 +1,25 @@
+This folder contains a number of examples of NeuroML 2 compliant files, the definition of the core NeuroML 2 
+components using LEMS, and a utility, nml2, which wraps the LEMS Interpreter to add greater support for NeuroML 2
+and import/export options for converting LEMS models to/from other formats. 
+
+    Quick start (Windows):
+
+  Type "make" to build the main libNeuroML jar file
+  Type "nml2 examples\LEMS_NML2_Ex2_Izh.xml" to see a simple example running
+  If you have Apache Ant installed, build with "ant" or run individual examples with "ant nml2_5", etc. or
+  try "ant test" to run a battery of tests
+
+    Quick start (Linux/Mac):
+
+  Type "./make" to build the main libNeuroML jar file
+  Type "./nml2 examples/LEMS_NML2_Ex2_Izh.xml" to see a simple example running
+  If you have Apache Ant installed, build with "ant" or run individual examples with "ant nml2_5", etc. or
+  try "ant test" to run a battery of tests
+
+
+It is advisable to add the environment variable NML2_HOME to your system pointing to this directory, and 
+then add NML2_HOME to your PATH. This will allow the nml2 utility to be used from any directory, and allow
+it to find the NeuroML 2 Component definition files in NeuroML2CoreTypes.
+
+
+See http://www.neuroml.org/neuroml2 for more details.

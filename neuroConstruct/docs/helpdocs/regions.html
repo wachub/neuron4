@@ -1,0 +1,76 @@
+<!--
+        This HTML file was automatically generated from the documentation files in /docs/XML/xmlForHtml/docs
+    --><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Regions</title>
+<style type="text/css">
+                     h1 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     h3 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     p {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     li {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ol {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ul {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                 </style>
+</head>
+<body>
+  
+    
+<h3 style="font-size: 16;color: black">Regions</h3>
+  
+  
+
+
+
+
+
+<p style="">A volume in 3D space which can be filled with cells. Regions defined at the tab <b>Regions</b> can be also used for specifying bounding regions for selecting cells, for example:</p>
+
+
+<ul>
+
+<li>To selectively apply stimulations to a subset of cells, either inside or outside a given region, via tab <b>Input/Output</b> 
+</li>
+
+<li>To select a subset of cells in a 3D network visualisation. Select <b>Select many...</b> in the drop down box for Cell Number.</li>
+
+<li>To select a subset of cells to analyse (e.g. to generate a rasterplot for) when a previous simulation is reloaded.</li>
+
+</ul>
+
+
+
+<p style="">Regions can also be used for:</p>
+
+<ul>
+
+<li>Defining extent in 3D of axonal arbours for use in <a href="Glossary_gen.html#Volume%20Based%20Connection">Volume Based Connections</a>. These can be added in the single cell 3D view when a segment is being edited (select function in drop down box)</li>
+
+</ul>
+
+
+
+<p style="">In the current version of neuroConstruct, these can be</p>
+
+
+<ol>
+
+<li>Rectangular boxes (i.e. cuboids): where the width, height and depth are specified, along with the location of one of the lower corners</li>
+
+<li>Spheres: the centre point and the radius are specified</li>
+
+<li>Cylinders: the centre points of the base and top are specified, as is the radius</li>
+
+<li>Cones: the centre points of the base and apex are specified, as is the base radius</li>
+
+</ol>
+
+
+
+<p style="">neuroConstruct can be extended (at the source code level) to include more complex 3D Regions,
+e.g. folium like constructs, etc. by extending the Java class <b>Region</b>.</p>
+
+  
+
+</body>
+</html>

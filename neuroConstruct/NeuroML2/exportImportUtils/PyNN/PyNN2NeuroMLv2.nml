@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<neuroml id="PyNN2NeuroMLv2" xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 http://neuroml.svn.sourceforge.net/viewvc/neuroml/NeuroML2/Schemas/NeuroML2/NeuroML_v2alpha.xsd">
+	<IF_curr_alpha cm="1.0" i_offset="0.9" id="cell_pop_IF_curr_alpha" tau_m="20.0" tau_refrac="10.0" tau_syn_E="2.0" tau_syn_I="5.0" v_init="-65" v_reset="-62.0" v_rest="-65.0" v_thresh="-52.0">
+		<notes>Component for PyNN IF_curr_alpha cell type</notes>
+	</IF_curr_alpha>
+	<alphaCurrSynapse id="syn_e_cell_pop_IF_curr_alpha" tau_syn="2.0"/>
+	<alphaCurrSynapse id="syn_i_cell_pop_IF_curr_alpha" tau_syn="5.0"/>
+	<IF_curr_exp cm="1.0" i_offset="1.0" id="cell_pop_IF_curr_exp" tau_m="20.0" tau_refrac="8.0" tau_syn_E="2.0" tau_syn_I="5.0" v_init="-65" v_reset="-70.0" v_rest="-65.0" v_thresh="-50.0">
+		<notes>Component for PyNN IF_curr_exp cell type</notes>
+	</IF_curr_exp>
+	<expCurrSynapse id="syn_e_cell_pop_IF_curr_exp" tau_syn="2.0"/>
+	<expCurrSynapse id="syn_i_cell_pop_IF_curr_exp" tau_syn="5.0"/>
+	<IF_cond_alpha cm="1.0" e_rev_E="0.0" e_rev_I="-70.0" i_offset="0.9" id="cell_pop_IF_cond_alpha" tau_m="20.0" tau_refrac="5.0" tau_syn_E="2.0" tau_syn_I="5.0" v_init="-65" v_reset="-65.0" v_rest="-65.0" v_thresh="-50.0">
+		<notes>Component for PyNN IF_cond_alpha cell type</notes>
+	</IF_cond_alpha>
+	<alphaCondSynapse e_rev="0.0" id="syn_e_cell_pop_IF_cond_alpha" tau_syn="2.0"/>
+	<alphaCondSynapse e_rev="-70.0" id="syn_i_cell_pop_IF_cond_alpha" tau_syn="5.0"/>
+	<IF_cond_exp cm="1.0" e_rev_E="0.0" e_rev_I="-70.0" i_offset="1.0" id="cell_pop_IF_cond_exp" tau_m="20.0" tau_refrac="5.0" tau_syn_E="2.0" tau_syn_I="5.0" v_init="-65" v_reset="-68.0" v_rest="-65.0" v_thresh="-52.0">
+		<notes>Component for PyNN IF_cond_exp cell type</notes>
+	</IF_cond_exp>
+	<expCondSynapse e_rev="0.0" id="syn_e_cell_pop_IF_cond_exp" tau_syn="2.0"/>
+	<expCondSynapse e_rev="-70.0" id="syn_i_cell_pop_IF_cond_exp" tau_syn="5.0"/>
+	<EIF_cond_exp_isfa_ista a="0.0" b="0.0805" cm="0.281" delta_T="2.0" e_rev_E="0.0" e_rev_I="-80.0" i_offset="0.6" id="cell_pop_EIF_cond_exp_isfa_ista" tau_m="9.3667" tau_refrac="0.0" tau_syn_E="5.0" tau_syn_I="5.0" tau_w="144.0" v_init="-65" v_reset="-68.0" v_rest="-70.6" v_spike="-40.0" v_thresh="-52.0">
+		<notes>Component for PyNN EIF_cond_exp_isfa_ista cell type</notes>
+	</EIF_cond_exp_isfa_ista>
+	<expCondSynapse e_rev="0.0" id="syn_e_cell_pop_EIF_cond_exp_isfa_ista" tau_syn="5.0"/>
+	<expCondSynapse e_rev="-80.0" id="syn_i_cell_pop_EIF_cond_exp_isfa_ista" tau_syn="5.0"/>
+	<HH_cond_exp cm="0.2" e_rev_E="0.0" e_rev_I="-80.0" e_rev_K="-90.0" e_rev_Na="50.0" e_rev_leak="-65.0" g_leak="0.01" gbar_K="6.0" gbar_Na="20.0" i_offset="0.2" id="cell_pop_HH_cond_exp" tau_syn_E="0.2" tau_syn_I="2.0" v_init="-65" v_offset="-63.0">
+		<notes>Component for PyNN HH_cond_exp cell type</notes>
+	</HH_cond_exp>
+	<expCondSynapse e_rev="0.0" id="syn_e_cell_pop_HH_cond_exp" tau_syn="0.2"/>
+	<expCondSynapse e_rev="-80.0" id="syn_i_cell_pop_HH_cond_exp" tau_syn="2.0"/>
+	<IF_cond_exp cm="1.0" e_rev_E="0.0" e_rev_I="-70.0" i_offset="0.0" id="cell_pop_post1" tau_m="20.0" tau_refrac="10.0" tau_syn_E="5.0" tau_syn_I="5.0" v_init="-65" v_reset="-62.0" v_rest="-65.0" v_thresh="-52.0">
+		<notes>Component for PyNN IF_cond_exp cell type</notes>
+	</IF_cond_exp>
+	<expCondSynapse e_rev="0.0" id="syn_e_cell_pop_post1" tau_syn="5.0"/>
+	<expCondSynapse e_rev="-70.0" id="syn_i_cell_pop_post1" tau_syn="5.0"/>
+	<IF_cond_exp cm="1.0" e_rev_E="0.0" e_rev_I="-70.0" i_offset="0.0" id="cell_pop_post2" tau_m="20.0" tau_refrac="10.0" tau_syn_E="5.0" tau_syn_I="5.0" v_init="-65" v_reset="-62.0" v_rest="-65.0" v_thresh="-52.0">
+		<notes>Component for PyNN IF_cond_exp cell type</notes>
+	</IF_cond_exp>
+	<expCondSynapse e_rev="0.0" id="syn_e_cell_pop_post2" tau_syn="5.0"/>
+	<expCondSynapse e_rev="-70.0" id="syn_i_cell_pop_post2" tau_syn="5.0"/>
+	<network id="network_PyNN2NeuroMLv2">
+		<population component="cell_pop_IF_curr_alpha" id="pop_IF_curr_alpha" size="1"/>
+		<population component="cell_pop_IF_curr_exp" id="pop_IF_curr_exp" size="1"/>
+		<population component="cell_pop_IF_cond_alpha" id="pop_IF_cond_alpha" size="1"/>
+		<population component="cell_pop_IF_cond_exp" id="pop_IF_cond_exp" size="1"/>
+		<population component="cell_pop_EIF_cond_exp_isfa_ista" id="pop_EIF_cond_exp_isfa_ista" size="1"/>
+		<population component="cell_pop_HH_cond_exp" id="pop_HH_cond_exp" size="1"/>
+		<population component="cell_pop_post1" id="pop_post1" size="1"/>
+		<population component="cell_pop_post2" id="pop_post2" size="1"/>
+		<synapticConnectionWD delay="5.0ms" from="pop_EIF_cond_exp_isfa_ista[0]" synapse="syn_e_cell_pop_post1" to="pop_post1[0]" weight="0.006"/>
+		<synapticConnectionWD delay="10.0ms" from="pop_EIF_cond_exp_isfa_ista[0]" synapse="syn_e_cell_pop_post2" to="pop_post2[0]" weight="0.003"/>
+	</network>
+</neuroml>

@@ -1,0 +1,7 @@
+These are files for testing NeuroML v2/LEMS support for NineML. Subject to change without notice
+
+To test install LEMS, the Python package for LEMS, Python package for nineml, and run
+
+python test_izh.py
+
+etc..

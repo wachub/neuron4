@@ -1,0 +1,219 @@
+<!--
+        This HTML file was automatically generated from the documentation files in /docs/XML/xmlForHtml/docs
+    --><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Network Connections Tutorial</title>
+<style type="text/css">
+                     h1 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     h3 {color: gray; font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     p {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     li {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ol {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                     ul {font-family: Dialog, Verdana, Helvetica, Arial, sans-serif}
+                 </style>
+</head>
+<body>
+  
+    
+<h3 style="font-size: 16;color: black">Network Connections Tutorial</h3>
+  
+  
+
+
+            
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Introduction</h3>
+
+      
+<p style="">Network Connections in neuroConstruct are made between cells in 2 <a href="../Glossary_gen.html#Cell Group">Cell Groups</a>.</p>
+
+
+    
+<p style="">	
+<a href="../install.html#Building+and+running">Run</a> neuroConstruct. Click on <b>File -&gt; New Project</b>.
+
+Enter the project name and the directory in which to place the main project folder. Click <b>OK</b>
+
+Reject the offer to create a few sample objects in the new project.</p>
+
+
+
+<p style="">	Add 2 cell types to the project. Go to <b>Cell Types -&gt; Add New Cell Type to Project</b> and specify GranuleCell in the drop down box (naming the cell Granule). Add a PurkinjeCell calledPurkinje also. </p>
+
+
+
+<p style="">Before a Network Connection can be made a <a href="../Glossary_gen.html#Synaptic Mechanism">Synaptic Mechanism</a> (e.g. a Double Exponential Synapse) needs to be
+associated with subsets of dendrites/axons on the Cells in these Groups.</p>
+
+
+<p style="">To add a new Synaptic Mechanism for the project, go to tab <b>Cell Mechanism -&gt; Add ChannelML from Template</b> and
+select the Double Exponential Synapse. Enter the name of the Mechanism (e.g. PF_Purk_Syn) and the new mechanism will be opened for editing.  You can view the HTML representation of the ChannelML file (1st tab) or the original ChannelML file (2nd tab).
+Pressing <b>Validate file</b> will validate the XML against the latest <a href="http://www.w3schools.com/schema/default.asp">XML Schema</a> file describing the content of ChannelML files. Pressing <b>Generate relevant plots</b>
+creates a plot of the conductance waveform in the file (note the implementation of plot generation is hardcoded in Java for a subset of ChannelML files). The 3rd tab can be used to edit the XML in an external text editor.
+The 4th and 5th tabs show the XSD files which transform the XML into NEURON and GENESIS format.
+More info on Cell Mechanisms available <a href="../cellmechanism.html">here</a>.
+
+</p>
+
+
+
+
+<p style="">Go to the tab <b>Visualisation</b>, select <b>View</b> with the granule cell selected in the drop down box.</p>
+
+        
+
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Specifying Groups</h3>
+
+
+      
+<p style="">Select <b>Groups</b> in the lower right hand drop down box to view the <a href="../Glossary_gen.html#Section Group">Section Groups</a>.
+There are four pre defined Section Groups:</p>
+
+
+<ul>
+
+<li>
+
+<b>all</b>: Every Section is included in this Group</li>
+
+<li>
+
+<b>soma_group</b>: This Group should contain only one Section, representing the soma</li>
+
+<li>
+
+<b>dendrite_group</b>: The Group of dendritic Sections</li>
+
+<li>
+
+<b>axon_group</b>: The Group of axonal Sections</li>
+
+</ul>
+
+
+
+<p style="">Network Connections will generally initiate on a Section in either the <b>soma_group</b> or the
+<b>axon_group</b>, and the connections will generally terminate on a Section in either the <b>soma_group</b>
+or the <b>dendrite_group</b>. These can be changed at the bottom of the Morphology based connection dialog to allow, e.g. axo-axonic or dendrodendritic 
+connections, which can be quite useful for electrical synapses.</p>
+
+
+<p style="">Not every <a href="../Glossary_gen.html#Section">Section</a> of the Cell would be a suitable location of a particular synapse,
+    so other subgroups can be defined which specify where the connections should be made. By pressing <b>Edit Groups</b>,
+    new Section Groups can be made (e.g. basal/apical dendrites, parallel fibers), grouping Sections into biophysically
+interesting regions of the cell. A Section will always belong to at most one of <b>soma_group</b>, <b>dendrite_group</b> or <b>axon_group</b>.</p>
+
+
+<p style="">For the granule cell, click on <b>Edit Groups</b>, add a new group called <b>parallel_fibers</b>, and add the sections parallelFiberPos and parallelFiberNeg to the group.</p>
+
+
+        
+
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Specifying Synaptic Connection Locations</h3>
+
+
+
+
+<p style="">Select <b>Synaptic Connection Location</b> in the drop down box. Click <b>Edit Synaptic Locations</b>.
+    The added Synaptic Mechanism (PF_Purk_Syn) should be in the drop down list. Select this and then select the Section Group, <b>parallel_fibers</b>, where the
+synapse can be found.</p>
+
+
+<p style="">It is important to point out again that the PRE synaptic location will be the intersection of the Sections specified in the GUI for presynaptic connections (nromally <b>soma_group</b> or the
+<b>axon_group</b>, but see above) and the Group(s) selected here. Similarly for the POST synaptic location. Therefore if the
+Group <b>all</b> is selected as a Synaptic Connection Location, synapses can be made on the axons (PRE),
+dendrites (POST) and soma (PRE and POST). However if only the Group <b>dendrite_group</b> is selected as a
+Synaptic Connection Location (or another Group only containing dendrites), then this particular Cell Type will only have
+POST synaptic connections. Axons on another Cell Type will need to be specified as Synaptic Connection Locations for
+this Synaptic Mechanism to make a Network Connection.
+</p>
+
+
+<p style="">View the PurkinjeCell now. There should be a group <b>main_dends</b> already defined. Associate this group with the Synaptic Mechanism (PF_Purk_Syn) also.</p>
+
+
+
+
+
+
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Specifying packing of Cell Groups</h3>
+
+      
+<p style="">Add 2 regions as in <a href="tutorial2.html">Tutorial 2</a>. Make both rectangular boxes, the first with lower point (0,0,0) measuring 120x50x120 (default values).
+          The second region will automatically be placed on top of this starting at (0,50,0) with the same dimensions.</p>
+
+          
+<p style="">Add 2 Cell Groups. The first named GranuleCells, associate with the lower region, fill with 12 granule cells (click on <b>Choose...</b> beside Packing Pattern in the New Cell Group dialog
+              and enter 12 beside <b>CellNumber</b>). The Second, PurkinjeCell, place in the upper region, and fill with a single Purkinje cell.
+          </p>
+        
+
+        
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Creating Network Connections</h3>
+
+      
+<p style="">Now that it is specified on which parts of the Cells synapses can be made, Network Connections can be created.</p>
+      
+<p style="">Go to tab <b>Network</b> and click on <b>Add Morphology Connection</b> under <a href="../Glossary_gen.html#Morphology Based Connection">Morphology Based Connections</a>. </p>
+
+      
+<p style="">Select the source Cell Group (GranuleCells) and the Target Cell Group (PurkinjeCell).
+       </p>
+
+      
+<p style="">Select the Synaptic Properties, including which Synaptic Mechanism is involved in the Network Connection, the voltage threshold
+      which will cause the synapse to fire, the delay after passing the threshold, and the weight of the synapse. These past two
+      values can be given fixed or variable values, in which case a new value will be generated for each instance of the synapse.
+       </p>
+
+      
+<p style="">Other options include the method for searching for the connection point, the max and min lengths of the allowed
+      connections, and a number of other Connection Conditions. These are explained in more detail in the Tool Tips which
+      pop up when the cursor hovers over the relevant panel/label. Ensure viewing Tool Tips is enabled in
+      <b>Settings -&gt; General Properties &amp; Project Defaults</b>.
+      </p>
+
+
+      
+<p style="">Once a Network Connection is specified, generate the network, and view the latest positions in tab <b>Visualisation</b>.
+      You will see the generated Network Connections as lines going from green (PRE synaptic location) to red
+      (POST synaptic location) between the Sections which are connected by the synapse. If the option is selected in
+      <b>3D Settings</b> a sphere will be placed at each of the Synaptic Endpoints.
+      </p>
+
+  
+
+  
+      
+<h3 style="font-size: 16;color: white;background-color: #a5b6c6;padding: 5px 5px 5px 5px">&nbsp;&nbsp;Further things to try...</h3>
+
+      
+<p style="">Try adjusting the parameters in the Network Connection. Set max and min values for the lengths of the connections. Distances from pre to post synaptic location can be checked by clicking
+          <b>Analyse connection lengths</b> after generation of the network.</p>
+
+      
+<p style="">	  Add more Purkinje cells and see how many connections go to each. Select <b>Analyse number of connections</b> at tab <b>Generate</b>.
+      </p>
+
+      
+<p style="">Try adding cell mechanisms to the cell as in <a href="tutorial2.html">Tutorial 2</a>, adding input to the Granule cells and running the network. Note these cells are greatly simplified versions of the
+          cells in the cerebellum and are unlikely to show very many of the properties of their biological counterparts. Look at the included examples, e.g. <a href="http://www.neuroConstruct.org/models">GranuleCellLayer.ncx</a> for more realistic cells.</p>
+
+
+        
+
+
+<p style="">&nbsp;</p>
+
+<p style="">&nbsp;</p>
+  
+
+</body>
+</html>
