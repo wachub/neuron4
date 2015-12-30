@@ -64,14 +64,14 @@ fi
 #echo "Classpath is" $CLASSPATH
 #echo "java.library.path is" $JAVA_LIBRARY_PATH
 
-javac  -sourcepath src -classpath $CLASSPATH  hello.java
+javac  -sourcepath src -classpath $CLASSPATH  $1.java
 
 echo "here2"
 
 #java -Xmx$NC_MAX_MEMORY  -classpath $CLASSPATH -Djava.library.path=$JAVA_LIBRARY_PATH hello $*
 
 
-java -Xmx$NC_MAX_MEMORY  -classpath $CLASSPATH hello $*
+java -Xmx$NC_MAX_MEMORY  -classpath $CLASSPATH $1 &
 
 
 

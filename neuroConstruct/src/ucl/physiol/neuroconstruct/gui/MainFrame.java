@@ -5664,6 +5664,8 @@ public class MainFrame extends JFrame implements ProjectEventListener, Generatio
      *
      */
 
+/*************************MP*************************************/
+
     private void doNewRegion()
     {
         if (projManager.getCurrentProject() == null)
@@ -5742,7 +5744,7 @@ public class MainFrame extends JFrame implements ProjectEventListener, Generatio
     }
 
 
-
+/*************************************MP******************************/
     /**
      * Edits selected region
      *
